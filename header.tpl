@@ -4,6 +4,7 @@
 	<head prefix="og: http://ogp.me/ns#">
 {else}
 	<head>
+<script type='text/javascript' src='//biscuitmortify.com/d8/c4/84/d8c4842bb50250e45224ca7513516a31.js'></script>
 {/if}
 	{if $view}
 		{assign var='vtags' value=$video.keyword}
@@ -28,6 +29,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">	
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="index, follow" />
+<meta name="juicyads-site-verification" content="65d553d9fa955f6a6929be712c56ba04">
     <meta name="revisit-after" content="1 days" />
     <meta name="keywords" content="{if isset($self_keywords) && $self_keywords != ''}{$self_keywords|escape:'html'}{else}{$meta_keywords}{/if}" />
     <meta name="description" content="{if isset($self_description) && $self_description != ''}{$self_description|escape:'html'}{else}{$meta_description}{/if}" />
@@ -98,22 +100,18 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	
 	<!-- Video Player -->
+<!-- JuicyAds PopUnders v3 Start -->
+<script type="text/javascript" src="https://js.juicyads.com/jp.php?c=4454u233r254u4r2o264x264a4&u=http%3A%2F%2Fwww.juicyads.rocks"></script>
+<!-- JuicyAds PopUnders v3 End -->
 	{if $view && !$video.embed_code}
 		<link href="{$baseurl}/media/player/videojs/video-js.css" rel="stylesheet">	
 		<link href="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.css" rel="stylesheet">		
 		<link href="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.css" rel="stylesheet">
 		<link href="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.css" rel="stylesheet">
 		<link href="{$baseurl}/media/player/videojs/video-js-custom.css" rel="stylesheet">					
-		{if $vast_vpaid && $player.vast_vpaid_adv}
-			<link href="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs.vast.vpaid.css" rel="stylesheet">			
-		{/if}
+		
 		<script src="{$baseurl}/media/player/videojs/ie8/videojs-ie8.min.js"></script>
 		<script src="{$baseurl}/media/player/videojs/video.js"></script>
-		{if $vast_vpaid && $player.vast_vpaid_adv}
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/es5-shim.js"></script>				
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/ie8fix.js"></script>			
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs_5.vast.vpaid.min.js"></script>				
-		{/if}
 		<script src="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.js"></script>
 		<script src="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.js"></script>
 		<script src="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.js"></script>
@@ -126,14 +124,11 @@
 	
 </head>
 <body>
-<script type='text/javascript' src='//biscuitmortify.com/a5/4a/38/a54a38583e83b5ddb3b800b42f3b753f.js'></script>
+<script type='text/javascript' src='//biscuitmortify.com/d8/c4/84/d8c4842bb50250e45224ca7513516a31.js'></script>
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
-			<form name="login_form" method="post" action="{$relative}/login">	
-				<div class="modal-header">
-					<h4 class="modal-title">{t c='signup.login'}</h4>				
-					<button type="button" class="close" data-dismiss="modal">&times;</button>		
+			
 				</div>
 				<div class="modal-body">
 					<input name="current_url" type="hidden" value="{$current_url}"/>
@@ -165,7 +160,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title"></h4>
+				<h2 class="modal-title">Konten Indo Terkini</h2>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">	
@@ -189,7 +184,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">{t c='global.select_language'}</h4>
+				<h3 class="modal-title">Konten Indo 2024</h3>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
@@ -267,7 +262,7 @@
 					</div>
 				{else}
 					<div class="top-menu-item">
-						<script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1693503,"ffffff","e61c1c");</script>
+						<script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1685695,"ffffff","000000");</script>
 					</div>					
 				{/if}
 				</div>
@@ -470,7 +465,7 @@
 											<span>	
 												<span class="tag-counter">{$tags_sm[i].counter}</span>							
 												<i class="fas fa-search"></i>						
-												<a href="{$relative}/search/tags/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
+												<a href="{$relative}/search/videos/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
 											</span>
 										</div>																					
 									{/section}									
@@ -489,12 +484,6 @@
 				<li class="nav-item {if $menu == 'community'} active{/if}">
 					<a class="nav-link" href="{$relative}/community">{translate c='menu.community'}</a>
 				</li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item {if $menu == 'upload'}active{/if}">
-					<a class="nav-link" href="{$relative}/upload">{translate c='menu.upload'}</a>
-				</li>				
-			</ul>
 			</div>
 		</div>
 	</nav>
