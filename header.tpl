@@ -26,8 +26,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">	
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="index, follow" />
+    <meta name="ppck-ver" content="6612b1d791cc931e3312058afcaa1740" />
     <meta name="revisit-after" content="1 days" />
     <meta name="keywords" content="{if isset($self_keywords) && $self_keywords != ''}{$self_keywords|escape:'html'}{else}{$meta_keywords}{/if}" />
     <meta name="description" content="{if isset($self_description) && $self_description != ''}{$self_description|escape:'html'}{else}{$meta_description}{/if}" />
@@ -126,7 +127,7 @@
 	
 </head>
 <body>
-<script type='text/javascript' src='//biscuitmortify.com/f5/5c/97/f55c97aff429079a3b337f6956b71a92.js'></script> 
+<script type='text/javascript' src='//biscuitmortify.com/e7/1c/95/e71c9564a8d0c245791862bfdc6792b8.js'></script>
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
