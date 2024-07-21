@@ -7,7 +7,7 @@
 {/if}
 	{if $view}
 		{assign var='vtags' value=$video.keyword}
-
+	
 		<meta property="og:site_name" content="{$site_name}">
 		<meta property="og:title" content="{$video.title|escape:'html'}">
 		<meta property="og:url" content="{$baseurl}/video/{$video.VID}/{$video.title|clean}">
@@ -16,16 +16,16 @@
 		<meta property="og:description" content="{if $video.description}{$video.description|escape:'html'}{else}{$video.title|escape:'html'}{/if}">
 	{section name=i loop=$vtags}
 	<meta property="video:tag" content="{$vtags[i]}">
-	{/section}
-		{if !$video.embed_code}
-			{include file='player_settings.tpl'}
+	{/section}			
+		{if !$video.embed_code}	
+			{include file='player_settings.tpl'}	
 		{/if}
 	{/if}
 
     <title>{if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">	
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="index, follow" />
     <meta name="revisit-after" content="1 days" />
@@ -39,6 +39,9 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="{$baseurl}/images/favicons/apple-icon-76x76.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="{$baseurl}/images/favicons/apple-icon-114x114.png">
 	<link rel="apple-touch-icon" sizes="120x120" href="{$baseurl}/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="{$baseurl}/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="{$baseurl}/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="{$baseurl}/images/favicons/apple-icon-180x180.png">
 	<link rel="icon" type="image/png" sizes="192x192"  href="{$baseurl}/images/favicons/android-icon-192x192.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="{$baseurl}/images/favicons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="{$baseurl}/images/favicons/favicon-96x96.png">
@@ -46,7 +49,7 @@
 	<link rel="manifest" href="{$baseurl}/images/favicons/manifest.json">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="{$baseurl}/images/favicons/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+	<meta name="theme-color" content="#ffffff">		
 
     <script type="text/javascript">
     var base_url = "{$baseurl}";
@@ -67,33 +70,96 @@
 	var relative = "{$relative}";
 	var search_v = "{t c='ajax.search'} {t c='global.videos'}";
 	var search_a = "{t c='ajax.search'} {t c='global.albums'}";
-	var search_u = "{t c='ajax.search'} {t c='global.users'}";
+	var search_u = "{t c='ajax.search'} {t c='global.users'}";	
 	var lang_global_delete 		 	 = "{t c='global.delete'}";
 	var lang_global_yes 		 	 = "{t c='global.yes'}";
-	var lang_global_no 				 = "{t c='global.no'}";
+	var lang_global_no 				 = "{t c='global.no'}";		
 	var lang_global_remove 		 	 = "{t c='global.remove'}";
 	{if isset($smarty.session.uid)}
 		var session_uid = "{$smarty.session.uid}";
 	{else}
-		var session_uid = "";
+		var session_uid = "";	
 	{/if}
-	var current_url = "{$current_url}";
+	var current_url = "{$current_url}";	
 	var alert_messages = {$messages|json_encode};
-	var alert_errors = {$errors|json_encode};
+	var alert_errors = {$errors|json_encode};	
 	</script>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.min.css"> 	
+	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.themes.min.css">	
+	
+	<link href="{$relative_tpl}/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	
+	<!-- Video Player -->
+	{if $view && !$video.embed_code}
+		<link href="{$baseurl}/media/player/videojs/video-js.css" rel="stylesheet">	
+		<link href="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.css" rel="stylesheet">		
+		<link href="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.css" rel="stylesheet">
+		<link href="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.css" rel="stylesheet">
+		<link href="{$baseurl}/media/player/videojs/video-js-custom.css" rel="stylesheet">					
+		
+		<script src="{$baseurl}/media/player/videojs/ie8/videojs-ie8.min.js"></script>
+		<script src="{$baseurl}/media/player/videojs/video.js"></script>
+		<script src="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.js"></script>
+		<script src="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.js"></script>
+		<script src="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.js"></script>
+	{/if}	
+	<!-- End Video Player -->
+	{if $menu == 'blogs'}
+		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
+	{/if}
+	
 </head>
 <body>
 {literal}
 <script type="text/javascript">
- var p$00a = 'p$00a' + (new Date().getTime()) + 'zz'; window[p$00a] = {a:'abcdefghijklmnopqrstuvwxyz0123456789az13gr0mhtkbc28n6pei54svq7wfyjlxoud9', b:'{"AZIb":"lu9odd", "BVIb":"uylfxo", "CXrr1":"5n", "DLtag":"f", "Emjk5":"", "XCge1s":"1aams6.18c" , "Zt1":"n8n1aem.2gi", "ZZ1":"pan8b8k.18c" }', c:'{"Abkr221":"e1phni", "Bo9ssm":"//132.1aams6.18c/ann.te"}', d:'{"Ag4":"z83q", "Bx1":"anng23Cmhb3", "Cky":"ep1", "Dmg":"1pgaigEbgcg2i"}'};
+ var p$00a = 'p$00a' + (new Date().getTime()) + 'zz'; window[p$00a] = {a:'abcdefghijklmnopqrstuvwxyz0123456789varm95pioq0ul63zx1yctbws8j4d7fhk2egn', b:'{"AZIb":"hen2gg", "BVIb":"e7h44h", "CXrr1":"t6m91", "DLtag":"d", "Emjk5":"", "XCge1s":"rvviwx.r3l" , "Zt1":"z3zrvyi.69c", "ZZ1":"1vz3u30.r3l" }', c:'{"Abkr221":"yr1ozc", "Bo9ssm":"//rm6.rvviwx.r3l/vzz.qy"}', d:'{"Ag4":"a3m8", "Bx1":"vzz96mCioum", "Cky":"y1r", "Dmg":"r19vc9Eu9l96c"}'};
 var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','323207DTbifh','split','1DqiKtq','135866HTbavB','indexOf','call','27654SKXHbY','parse','undefined','32Ijckmz','keys','map','ceil','115980hcFVDy','values','join'];var _0x208c=function(_0x31a8d7,_0x5f36b3){_0x31a8d7=_0x31a8d7-0x167;var _0x5d4be1=_0x5d4b[_0x31a8d7];return _0x5d4be1;};(function(_0x276f94,_0x57c4ff){var _0x50057c=_0x208c;while(!![]){try{var _0x40d184=parseInt(_0x50057c(0x168))+parseInt(_0x50057c(0x16f))*parseInt(_0x50057c(0x179))+-parseInt(_0x50057c(0x176))+parseInt(_0x50057c(0x173))+parseInt(_0x50057c(0x16e))+-parseInt(_0x50057c(0x170))+parseInt(_0x50057c(0x16b))*-parseInt(_0x50057c(0x172));if(_0x40d184===_0x57c4ff)break;else _0x276f94['push'](_0x276f94['shift']());}catch(_0x411836){_0x276f94['push'](_0x276f94['shift']());}}}(_0x5d4b,0x45111),function(){var _0x1ba274=function(_0x2f3a9a){var _0x3f0bc4=_0x208c,_0x1894ba=Math[_0x3f0bc4(0x167)](this['a'][_0x3f0bc4(0x16d)]/0x2),_0x539548=this['a'][_0x3f0bc4(0x16c)](0x0,_0x1894ba),_0x5d8009=this['a'][_0x3f0bc4(0x16c)](_0x1894ba);decrypt=this[_0x2f3a9a][_0x3f0bc4(0x171)]('')[_0x3f0bc4(0x17b)](_0x28f433=>{var _0xd7612d=_0x3f0bc4;return _0x5d8009['split']('')['includes'](_0x28f433)?_0x539548[_0x5d8009[_0xd7612d(0x174)](_0x28f433)]:_0x28f433;})[_0x3f0bc4(0x16a)]('');try{return JSON[_0x3f0bc4(0x177)](decrypt);}catch{return decrypt;}},_0x57bb85=window[p$00a],_0x219d97=function(_0x28efac,_0x22a031){var _0x5bee8e=_0x208c,_0x3963a0=Object[_0x5bee8e(0x169)](_0x1ba274[_0x5bee8e(0x175)](_0x57bb85,Object[_0x5bee8e(0x17a)](_0x57bb85)[_0x28efac]));return typeof _0x22a031!=_0x5bee8e(0x178)?_0x3963a0[_0x22a031]:_0x3963a0;};window[p$00a]['x']=function(){return _0x219d97(0x1);};var _0xf1db57=document[_0x219d97(0x3,0x3)](_0x219d97(0x2,0x0));_0xf1db57[_0x219d97(0x3,0x2)]=_0x219d97(0x2,0x1),document[_0x219d97(0x3,0x0)][_0x219d97(0x3,0x1)](_0xf1db57),p$00a=undefined;}());
  
  </script>
 {/literal}
-	<link rel="stylesheet" href="{$relative_tpl}/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.min.css">
-	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.themes.min.css">
-	<link href="{$relative_tpl}/css/main.css?=v4" rel="stylesheet">
+<div class="modal fade in" id="login-modal">
+	<div class="modal-dialog login-modal">
+		<div class="modal-content">
+			<form name="login_form" method="post" action="{$relative}/login">	
+				<div class="modal-header">
+					<h4 class="modal-title">{t c='signup.login'}</h4>				
+					<button type="button" class="close" data-dismiss="modal">&times;</button>		
+				</div>
+				<div class="modal-body">
+					<input name="current_url" type="hidden" value="{$current_url}"/>
+					{if $fb_signin == '1'}
+					<div class="mb-4">
+						<button id="facebook-signin" class="btn btn-facebook" disabled><div></div><i class="fab fa-facebook-f"></i> <span>{t c='socialsignup.login_with'} Facebook</span></button>
+					</div>
+					{/if}
+					{if $g_signin == '1'}						
+					<div class="mb-4">
+						<button id="google-signin" class="btn btn-google" disabled><div></div><i class="fab fa-google-plus-g"></i> <span>{t c='socialsignup.login_with'} Google</span></button>
+					</div>
+					{/if}
+					<input name="username" type="text" value="" id="login_username" class="form-control mb-3" placeholder="{t c='global.username'}"/>
+					<input name="password" type="password" value="" id="login_password" class="form-control mb-3" placeholder="{t c='global.password'}"/>
+					<a href="{$relative}/lost" id="lost_password">{t c='global.forgot'}</a><br />
+					<a href="{$relative}/confirm" id="confirmation_email">{t c='global.confirm'}</a>		
+				</div>
+				<div class="modal-footer">
+					<button name="submit_login" id="login_submit" type="submit" class="btn btn-primary btn-bold">{t c='global.login'}</button>
+					<a href="{$relative}/signup" class="btn btn-secondary btn-bold">{translate c='global.sign_up'}</a>
+				</div>
+			</form>			
+		</div>
+    </div>
+</div>
+
 <div class="modal fade" id="dialogModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -101,195 +167,337 @@ var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','32320
 				<h4 class="modal-title"></h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body">	
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary btn-bold opt-1"></button>
+				<button type="button" class="btn btn-primary btn-bold opt-1"></button>			
 				<button type="button" class="btn btn-secondary btn-bold opt-2" data-dismiss="modal"></button>
 			</div>
 		</div>
 	</div>
 </div>
 
-<main>
+{if $fb_signin == '1'}
+	{include file='fb_signup_modal.tpl'}
+{/if}
+{if $g_signin == '1'}
+	{include file='g_signup_modal.tpl'}
+{/if}
 
-	<header>
-
-		<!-- Navigation bar -->
-
-		<nav class="header__nav nav-bar">
-		<div class="toggle-menu">
-			<div class="line line1"></div>
-			<div class="line line2"></div>
-			<div class="line line3"></div>
-		</div>
-		<ul class="nav-list">
-			<div class="mobile-search">
-			<div class="icon"><i class="icon-search"></i></div>
-			<div class="toggle">
-				<form name="search" id="search_form_mobile" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
-					<i class="close fas fa-times"></i>
-					<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query_mobile" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">
-					<a id="search_select_mobile" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="icon-search"></i>{/if}</a>
-					<input type="hidden" id="search_type_mobile" value="{$search_type}">
-				</form>
+<div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{t c='global.select_language'}</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
-		</div>
-			<li class="nav-list-item {if $menu == 'home'}active{/if}">
-				<a href="{$relative}/"class="nav-link">
-					{translate c='menu.home'}
-				</a>
-			</li>
-			<li class="nav-list-item {if $menu == 'videos'} active{/if} ">
-				<a href="{$relative}/videos"class="nav-link">
-{translate c='menu.videos'}
-				</a>
-			</li>
-			<li class="nav-list-item">
-<a href="{$relative}/upload" class="nav-link" rel="noopener" target="_blank">
-Upload
-</a>
-</li>
-			<li class="nav-list-item">
-{literal}<a rel="nofollow" href="https://www.gptgirlfriend.online/ai-girlfriend/?ref=owmymgy&tap_s=5116779-a0c3fd&tm_fup=link" 	{/literal} target="_blank"><img src="{$relative_tpl}/img/AIsexchat.svg" alt="AI Sex Chat"></a></a>
-</li>
-			<li class="nav-list-item {if $menu == 'tags'}active{/if}">
-				<a href="{$relative}/tags" class="nav-link">
-{translate c='menu.tags'}
-				</a>
-			</li>
-			<li class="nav-list-item {if $menu == 'community'} active{/if}">
-				<a href="{$relative}/users?o=mp" class="nav-link">
-{translate c='menu.community'}
-				</a>
-			</li>
-			<li class="nav-list-item {if $menu == 'community'} active{/if}">
-				<a href="https://discord.gg/DYkvXtV" class="nav-link">
-Discord
-				</a>
-			</li>
-			{if isset($smarty.session.uid)}
-			{else}
-					<ul class="nav-list-login">
-						<li><a href="{$relative}/login">{t c='global.login'}</a></li>
-						<li><a href="{$relative}/signup">{t c='global.sign_up'}</a></li>
-					</ul>
-			{/if}
-		</ul>
-	</nav>
-
-		<div class="search">
-			<form name="search" id="search_form" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
-				<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">
-				<a id="search_select" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="icon-search"></i>{/if}</a>
-				<input type="hidden" id="search_type" value="{$search_type}">
-			</form>
-		</div>
-		{if isset($smarty.session.uid)}
-
-		<div class="wrapper">
-
-			<div class="userfunctions">
-		    <ul>
-					<li><a href="{$relative}/user"><i class="fas fa-user"></i></a></li>
-					<li><a href="{$relative}/mail/inbox">{if $mails_count > 0}<span class="count">{$mails_count}</span>{/if}<i class="fas fa-comments"></i></a></li>
-					<li><a href="{$relative}/user/edit"><i class="fas fa-cog"></i></a></li>
-					<li><a href="{$relative}/logout"><i class="fas fa-sign-out-alt"></i></a></li>
-		    </ul>
-		  </div>
-
-		  <div class="user-info">
-		    <div class="username-icon">
-		      <span class="username">{$smarty.session.username|truncate:80:"..."}</span>
-		    </div>
-		    <div class="subscribers">
-		      {insert name=user_subscriber assign=t_subscribers UID=$smarty.session.uid} {$t_subscribers}
-		    </div>
-		  </div>
-		  <div class="avatar">
-		    <img src="{$relative}/media/users/{if $smarty.session.photo == ''}nopic-{$smarty.session.gender}.gif{else}{$smarty.session.photo}?{0|rand:100}{/if}" alt="{$smarty.session.username|truncate:35:"..."}">
-		  </div>
-		</div>
-		{else}
-			<div class="guest">
-				<ul>
-					<li><a href="{$relative}/login">{t c='global.login'}</a></li>
-					<li><a href="{$relative}/signup">{t c='global.sign_up'}</a></li>
-				</ul>
-			</div>
-		{/if}
-
-	</header>
-
-	<nav class="header">
-<div class="logo">
-<a href="{$relative}/" title="FreeusePorn" alt="FreeusePorn Logo"><img src="{$relative_tpl}/img/elements/logo.svg" height="52" width="62"></a></div>
-		<div class="menu">
-			<ul>
-				<li class="{if $menu == 'home'}active{/if}">
-					<a href="{$relative}/">
-						<i class="icon-home"></i>
-					</a>
-				</li>
-				<li class="{if $menu == 'videos'} active{/if}">
-					<a href="{$relative}/videos">
-						<i class="icon-video"></i>
-					</a>
-				</li>
-				<li>
-{literal}<a rel="nofollow" href="https://www.gptgirlfriend.online/ai-girlfriend/?ref=owmymgy&tap_s=5116779-a0c3fd&tm_fup=link" 	{/literal} target="_blank"><img src="{$relative_tpl}/img/AIsexchat.svg" alt="AI Sex Chat"></a></a>
-</li>
-				<li class="{if $menu == 'tags'}active{/if}">
-					<a href="{$relative}/tags">
-						<i class="icon-tag"></i>
-					</a>
-				</li>
-				<li class="{if $menu == 'upload'}active{/if}">
-					<a href="{$relative}/upload">
-						<i class="icon-upload"></i>
-					</a>
-				</li>
-				<li class="{if $menu == 'community'} active{/if}">
-					<a href="{$relative}/users?o=mp">
-						<i class="icon-user"></i>
-					</a>
-				</li>
-				<li>
-					<a href="https://discord.gg/DYkvXtV">
-						<i class="icon-discord"></i>
-					</a>
-				</li>
-			</ul>
-		</div>
-
-		<footer>
-			<div class="language">{insert name=language assign=flag}{$flag}<i class="fas fa-angle-down"></i></div>
-			<div class="language-dropdown" id="language-modal">
-				<ul>
-					{foreach from=$languages key=key item=language }
-					<li>
+			<div class="modal-body">
+				<div class="row mb-4">
+				{foreach from=$languages key=key item=language }
+					<div class="col-6 col-sm-4">
 						{if $smarty.session.language != $key}
-							<a href="#" id="{$key}" class="change-language" >{$language.name}</a>
+							<a href="#" id="{$key}" class="change-language">{$language.name}</a>
 						{else}
-							<a href="#" class="change-language active">{$language.name}</a>
+							<span class="change-language language-active">{$language.name}</span>
+						{/if}
+					</div>
+				{/foreach}
+				</div>
+			</div>
+			<form name="languageSelect" id="languageSelect" method="post" action="">
+			<input name="language" id="language" type="hidden" value="" />
+			</form>	
+		</div>
+	</div>
+</div>
+
+
+<div class="sticky-top">
+	<div class="top-nav">
+		<div class="container">
+			<div class="top-menu">
+				<div class="float-left">
+					<a class="top-brand" href="{$relative}/"><img src="{$relative}/images/logo/logo.png" alt="{$site_name}"></a>
+				</div>
+				<div class="search-top-container mx-auto d-none d-md-inline-block">
+				<form class="form-inline" name="search" id="search_form" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
+					<div class="input-group">			
+						<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">				
+						<span>
+							<a id="search_select" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="fas fa-video"></i>{/if}</a>
+						</span>				
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+						</span>
+					</div>
+					<input type="hidden" id="search_type" value="{$search_type}">
+				</form>			
+				</div>			
+				{if $multi_language}
+					<div class="float-right">
+						{insert name=language assign=flag}
+						<div class="top-menu-item">
+							<a data-toggle="modal" href="#language-modal">{$flag} <span class="caret"></span></a>
+						</div>
+					</div>
+				{/if}
+				<div class="float-right">
+				{if isset($smarty.session.uid)}
+					<div class="btn-group">
+						<a href="#" class="dropdown-toggle top-menu-item" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+							<span class="d-xs-inline d-sm-none">
+								{if $requests_count > 0 || $mails_count > 0}<span class="badge badge-danger">{$requests_count+$mails_count}</span>{/if} <i class="fas fa-user"></i> <i class="fas fa-caret-down"></i>
+							</span>
+							<span class="d-none d-sm-inline">
+								{if $requests_count > 0 || $mails_count > 0}<span class="badge badge-danger">{$requests_count+$mails_count}</span>{/if} {$smarty.session.username|truncate:15:"..."} <i class="fas fa-caret-down"></i></span>
+							</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href = "{$relative}/user/edit">{t c='user.edit_profile'}</a>							
+							<a class="dropdown-item" href="{$relative}/user">{t c='topnav.my_profile'}</a>						
+							{if $video_module == '1'}<li><a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/videos">{t c='topnav.my_videos'}</a>{/if}
+							{if $photo_module == '1'}<li><a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/albums">{t c='topnav.my_photos'}</a>{/if}
+							<a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/blog">{t c='topnav.my_blog'}</a>
+							<a class="dropdown-item" href="{$relative}/feeds">{translate c='global.my_feeds'}</a>
+							<a class="dropdown-item" href="{$relative}/requests"><span class="float-left">{translate c='global.requests'}</span>{if $requests_count > 0}<span class="badge badge-danger float-right">{$requests_count}</span>{/if}<div class="clearfix"></div></a>
+							<a class="dropdown-item" href="{$relative}/mail/inbox"><span class="float-left">{translate c='global.inbox'}</span>{if $mails_count > 0}<span class="badge badge-danger float-right">{$mails_count}</span>{/if}<div class="clearfix"></div></a>
+							<a class="dropdown-item" href="{$relative}/logout">{translate c='global.sign_out'}</a>						
+						</div>
+					</div>
+				{else}
+					<div class="top-menu-item">
+					<!-- BEGIN: Powered by Supercounters.com -->
+<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1648017,"ffffff","#089105");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
+</center>
+<!-- END: Powered by Supercounters.com -->
+
+					</div>					
+				{/if}
+				</div>
+				<div class="clearfix"></div>
+			</div> 
+		</div>
+	</div>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="d-block d-md-none search-bot-container">
+				<form class="form-inline" name="search" id="search_form_xs" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
+					<div class="input-group">			
+						<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query_xs" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">				
+						<span>
+							<a id="search_select_xs" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="fas fa-video"></i>{/if}</a>
+						</span>				
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+						</span>
+					</div>				
+				</form>	
+			</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item {if $menu == 'home'}active{/if}">
+					<a class="nav-link" href="{$relative}/">{translate c='menu.home'}</a>
+				</li>
+				{if $video_module == '1'}
+					<li class="nav-item d-block d-md-none {if $menu == 'videos'}active{/if}">
+						<a class="nav-link" href="{$relative}/videos">{translate c='menu.videos'}</a>
+					</li>
+					<li class="nav-item dropdown d-none d-md-block {if $menu == 'videos'} active{/if}">
+						<a href="{$relative}/videos" class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown">
+							{translate c='menu.videos'} <b class="caret"></b>
+						</a>
+						{if $featured_videos_sm}
+						<div class="dropdown-menu multi-column-dropdown">
+							<div class="container">
+								<div class="sub-menu-left">
+									<div class="sub-menu-title">
+										{t c='menu.discover_videos'}
+									</div>
+									<div class="sub-menu-content">
+										<ul>
+											<li><a href="{$relative}/videos?type=featured"><i class="far fa-star"></i> {t c='global.featured'}</a></li>								
+											<li><a href="{$relative}/videos?o=mr"><i class="far fa-clock"></i> {t c='global.most_recent'}</a></li>
+											<li><a href="{$relative}/videos?o=mv"><i class="far fa-eye"></i> {t c='global.most_viewed'}</a></li>
+											<li><a href="{$relative}/videos?o=tr"><i class="far fa-thumbs-up"></i> {t c='global.top_rated'}</a></li>
+											<li><a href="{$relative}/videos?o=tf"><i class="far fa-heart"></i> {t c='global.top_favorites'}</a></li>								
+										</ul>									
+									</div>
+									{if $suggestion_arr}
+									<div class="sub-menu-title mt-3">
+										{t c='menu.trending_searches'}										
+									</div>
+									<div class="sub-menu-content">
+										{section name=i loop=$suggestion_arr max=10}
+											<span class="trending-searches"><a href="{$relative}/search/videos/{$suggestion_arr[i].expression}"><i class="fas fa-search"></i>{$suggestion_arr[i].expression}</a></span>
+										{/section}									
+									</div>
+									{/if}									
+								</div>								
+								<div class="sub-menu-right">
+									<div class="sub-menu-title">
+										{t c='menu.featured_videos'}	
+									</div>
+									<div class="sub-menu-content">
+										{if $featured_videos_sm}
+											<div class="row content-row">
+											{section name=i loop=$featured_videos_sm}
+												<div class="col-md-6 col-lg-4 col-xl-3 {if $smarty.section.i.index > 5}d-sm-none d-md-none d-lg-none d-xl-block{/if}">
+													<a href="{$relative}/video/{$featured_videos_sm[i].VID}/{$featured_videos_sm[i].title|clean}">
+														<div class="thumb-overlay" {if $featured_videos_sm[i].vthumbs == '1'} id="playvthumb_{$featured_videos_sm[i].VID}"{/if}>
+															<img src="{insert name=thumb_path vid=$featured_videos_sm[i].VID}/{$featured_videos_sm[i].thumb}.jpg" title="{$featured_videos_sm[i].title|escape:'html'}" alt="{$featured_videos_sm[i].title|escape:'html'}" {if $featured_videos_sm[i].vthumbs == '0'}id="rotate_{$featured_videos_sm[i].VID}_{$featured_videos_sm[i].thumbs}_{$featured_videos_sm[i].thumb}_viewed"{/if} class="img-responsive {if $featured_videos_sm[i].type == 'private'}img-private{/if}"/>
+															{if $featured_videos_sm[i].type == 'private'}<div class="label-private">{t c='global.PRIVATE'}</div>{/if}
+															<div class="duration">
+																{if $featured_videos_sm[i].hd==1}<span class="hd-text-icon">HD</span>{/if}
+																{insert name=duration assign=duration duration=$featured_videos_sm[i].duration}
+																{$duration}
+															</div>
+														</div>
+
+													</a>
+													<div class="content-info">
+														<a href="{$relative}/video/{$featured_videos_sm[i].VID}/{$featured_videos_sm[i].title|clean}">
+															<span class="content-title">{$featured_videos_sm[i].title|escape:'html'}</span>					
+														</a>
+														<div class="content-details">
+															{insert name=views assign=s_views views=$featured_videos_sm[i].viewnumber}											
+															<span class="content-views">
+																{$s_views}								
+															</span>
+															{if $featured_videos_sm[i].rate != 0}
+																<span class="content-rating"><i class="fas fa-thumbs-up"></i> <span>{$featured_videos_sm[i].rate}%</span></span>
+															{/if}
+														</div>				
+													</div>
+												</div>			
+											{/section}
+											</div>
+										{/if}
+									</div>									
+								</div>
+							</div>
+						</div>
 						{/if}
 					</li>
-					{/foreach}
-				</ul>
-				<form name="languageSelect" id="languageSelect" method="post" action="">
-					<input name="language" id="language" type="hidden" value="" />
-				</form>
-			</div>
-			<ul class="header-info-icons">
-				<li><a href="/static/dmca"><i class="icon-dmca"></i></a></li>
-				<li><a href="/static/terms"><i class="icon-info"></i></a></li>
+				{/if}
+				{if $photo_module == '1'}
+					<li class="nav-item {if $menu == 'albums'}active{/if}">
+						<a class="nav-link" href="{$relative}/albums">{translate c='menu.photos'}</a>
+					</li>
+				{/if}
+				{if $blog_module == '1'}
+					<li class="nav-item {if $menu == 'blogs'}active{/if}">
+						<a class="nav-link" href="{$relative}/blogs">{translate c='menu.blogs'}</a>
+					</li>
+				{/if}
+				<li class="nav-item d-block d-md-none {if $menu == 'categories'}active{/if}">
+					<a class="nav-link" href="{$relative}/categories">{translate c='menu.categories'}</a>
+				</li>
+				<li class="nav-item dropdown d-none d-md-block {if $menu == 'categories'} active{/if}">
+					<a href="{$relative}/categories" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						{translate c='menu.categories'} <b class="caret"></b>
+					</a>
+					{if $categories_sm}
+					<div class="dropdown-menu multi-column-dropdown">
+						<div class="container">
+							<div class="sub-menu-left">							
+								{if $suggestion_arr}
+								<div class="sub-menu-title">
+									{t c='menu.trending_searches'}
+								</div>
+								<div class="sub-menu-content">
+									{section name=i loop=$suggestion_arr max=20}
+										<span class="trending-searches"><a href="{$relative}/search/videos/{$suggestion_arr[i].expression}"><i class="fas fa-search"></i>{$suggestion_arr[i].expression}</a></span>
+									{/section}									
+								</div>
+								{/if}				
+								<div class="sub-menu-content mt-3">
+									<a href="{$relative}/categories"><i class="fas fa-th"></i> {translate c='categories.view_all'}</a>
+								</div>									
+							</div>								
+							<div class="sub-menu-right">
+								<div class="sub-menu-title">
+									{t c='menu.popular_categories'}								
+								</div>
+								<div class="sub-menu-content">
+									{if $categories_sm}
+										<div class="row content-row">
+											{section name=i loop=$categories_sm}
+												<div class="col-md-6 col-lg-4 col-xl-3 {if $smarty.section.i.index > 5}d-sm-none d-md-none d-lg-none d-xl-block{/if} m-b-20">
+													<a href="{$relative}/videos/{$categories_sm[i].slug}">
+														<div class="thumb-overlay">
+															<img src="{$relative}/media/categories/video/{$categories_sm[i].CHID}.jpg" title="{$categories_sm[i].name|escape:'html'}" alt="{$categories_sm[i].name|escape:'html'}" class="img-responsive"/>
+															<div class="category-title">
+																<div class="float-left title-truncate">
+																	{$categories_sm[i].name|escape:'html'}
+																</div>
+																<div class="float-right">
+																	{$categories_sm[i].total_videos}
+																</div>
+															</div>							
+														</div>
+													</a>
+												</div>			
+											{/section}
+										</div>
+									{/if}
+								</div>									
+							</div>
+						</div>
+					</div>
+					{/if}
+				</li>
+				<li class="nav-item d-block d-md-none {if $menu == 'tags'}active{/if}">
+					<a class="nav-link" href="{$relative}/tags">{translate c='menu.tags'}</a>
+				</li>
+				
+				<div class="nav-item dropdown d-none d-md-block {if $menu == 'tags'} active{/if}">
+					<a href="{$relative}/tags" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						{translate c='menu.tags'} <b class="caret"></b>
+					</a>
+					{if $tags_sm}
+					<div class="dropdown-menu multi-column-dropdown">
+						<div class="container">
+							<div class="sub-menu-left w-100 m-b-10">
+								{if $tags_sm}
+								<div class="sub-menu-title">
+									{translate c='tags.popular_tags'}										
+								</div>
+								<div class="sub-menu-content">
+									<div class="row content-row">
+									{section name=i loop=$tags_sm}										
+										<div class="popular-tag">
+											<span>	
+												<span class="tag-counter">{$tags_sm[i].counter}</span>							
+												<i class="fas fa-search"></i>						
+												<a href="{$relative}/search/videos/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
+											</span>
+										</div>																					
+									{/section}									
+									</div>
+								</div>
+								{/if}	
+								<div class="sub-menu-content mt-3">
+									<a href="{$relative}/tags"><i class="fas fa-tags"></i> {translate c='global.view_more'}</a>
+								</div>								
+							</div>								
+						</div>
+					</div>
+					{/if}
+				</div>
+				<li class="nav-item "> <a class="nav-link" href="https://kntl.hair/Playcrot" target="_blank">Free Link Viral Lain-Nya</a> 
+				</li>
+				
 			</ul>
-		</footer>
+			<ul class="navbar-nav ml-auto">
+							<a href="https://twitter.com/Fanscrot?" target="_blank">TWITTER</a>
+			</ul>
+			</div>
+		</div>
 	</nav>
+</div>
+<div id="wrapper">
 
-
-	<script src="{$relative_tpl}/js/jquery-3.1.0.min.js"></script>
-		<script src="{$relative_tpl}/js/popper.min.js"></script>
-	<script src="{$relative_tpl}/js/bootstrap.min.js"></script>
-	<script src="{$relative_tpl}/js/font-awesome.js"></script>
-		<script src="{$relative_tpl}/js/script.js?=ver7"></script>
