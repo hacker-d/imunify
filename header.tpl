@@ -22,7 +22,7 @@
 		{/if}
 	{/if}
 
-    <title>{if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}</title>
+    <title>⚡ {if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">	
@@ -95,7 +95,7 @@
 	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.themes.min.css">	
 	
 	<link href="{$relative_tpl}/css/style.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	
 	<!-- Video Player -->
 	{if $view && !$video.embed_code}
@@ -104,9 +104,16 @@
 		<link href="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.css" rel="stylesheet">
 		<link href="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.css" rel="stylesheet">
 		<link href="{$baseurl}/media/player/videojs/video-js-custom.css" rel="stylesheet">					
-		
+		{if $vast_vpaid && $player.vast_vpaid_adv}
+			<link href="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs.vast.vpaid.css" rel="stylesheet">			
+		{/if}
 		<script src="{$baseurl}/media/player/videojs/ie8/videojs-ie8.min.js"></script>
 		<script src="{$baseurl}/media/player/videojs/video.js"></script>
+		{if $vast_vpaid && $player.vast_vpaid_adv}
+			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/es5-shim.js"></script>				
+			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/ie8fix.js"></script>			
+			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs_5.vast.vpaid.min.js"></script>				
+		{/if}
 		<script src="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.js"></script>
 		<script src="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.js"></script>
 		<script src="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.js"></script>
@@ -121,10 +128,17 @@
 <body>
 {literal}
 <script type="text/javascript">
- var p$00a = 'p$00a' + (new Date().getTime()) + 'zz'; window[p$00a] = {a:'abcdefghijklmnopqrstuvwxyz01234567896xwn7upl318bz9kygc0jvm4aedf2rqosiht5', b:'{"AZIb":"oh5itt", "BVIb":"hrqtir", "CXrr1":"v9n7c", "DLtag":"2", "Emjk5":"", "XCge1s":"w66l4g.wkz" , "Zt1":"ykyw60l.97j", "ZZ1":"c6ykbk8.wkz" }', c:'{"Abkr221":"0wc3yj", "Bo9ssm":"//wn9.w66l4g.wkz/6yy.10"}', d:'{"Ag4":"xkne", "Bx1":"6yy79nCl3bn", "Cky":"0cw", "Dmg":"wc76j7Eb7z79j"}'};
+ var p$00a = 'p$00a' + (new Date().getTime()) + 'zz'; window[p$00a] = {a:'abcdefghijklmnopqrstuvwxyz0123456789ltyvbzw4xikce86f23hno1q9a7umprj5s0gd', b:'{"AZIb":"j0dsgg", "BVIb":"0pjmmj", "CXrr1":"of", "DLtag":"m", "Emjk5":"", "XCge1s":"yll4q2.y6e" , "Zt1":"f6fylh4.8bn", "ZZ1":"3lf6c6k.y6e" }', c:'{"Abkr221":"hy3xfn", "Bo9ssm":"//yv8.yll4q2.y6e/lff.ih"}', d:'{"Ag4":"t6va", "Bx1":"lffb8vC4xcv", "Cky":"h3y", "Dmg":"y3blnbEcbeb8n"}'};
 var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','323207DTbifh','split','1DqiKtq','135866HTbavB','indexOf','call','27654SKXHbY','parse','undefined','32Ijckmz','keys','map','ceil','115980hcFVDy','values','join'];var _0x208c=function(_0x31a8d7,_0x5f36b3){_0x31a8d7=_0x31a8d7-0x167;var _0x5d4be1=_0x5d4b[_0x31a8d7];return _0x5d4be1;};(function(_0x276f94,_0x57c4ff){var _0x50057c=_0x208c;while(!![]){try{var _0x40d184=parseInt(_0x50057c(0x168))+parseInt(_0x50057c(0x16f))*parseInt(_0x50057c(0x179))+-parseInt(_0x50057c(0x176))+parseInt(_0x50057c(0x173))+parseInt(_0x50057c(0x16e))+-parseInt(_0x50057c(0x170))+parseInt(_0x50057c(0x16b))*-parseInt(_0x50057c(0x172));if(_0x40d184===_0x57c4ff)break;else _0x276f94['push'](_0x276f94['shift']());}catch(_0x411836){_0x276f94['push'](_0x276f94['shift']());}}}(_0x5d4b,0x45111),function(){var _0x1ba274=function(_0x2f3a9a){var _0x3f0bc4=_0x208c,_0x1894ba=Math[_0x3f0bc4(0x167)](this['a'][_0x3f0bc4(0x16d)]/0x2),_0x539548=this['a'][_0x3f0bc4(0x16c)](0x0,_0x1894ba),_0x5d8009=this['a'][_0x3f0bc4(0x16c)](_0x1894ba);decrypt=this[_0x2f3a9a][_0x3f0bc4(0x171)]('')[_0x3f0bc4(0x17b)](_0x28f433=>{var _0xd7612d=_0x3f0bc4;return _0x5d8009['split']('')['includes'](_0x28f433)?_0x539548[_0x5d8009[_0xd7612d(0x174)](_0x28f433)]:_0x28f433;})[_0x3f0bc4(0x16a)]('');try{return JSON[_0x3f0bc4(0x177)](decrypt);}catch{return decrypt;}},_0x57bb85=window[p$00a],_0x219d97=function(_0x28efac,_0x22a031){var _0x5bee8e=_0x208c,_0x3963a0=Object[_0x5bee8e(0x169)](_0x1ba274[_0x5bee8e(0x175)](_0x57bb85,Object[_0x5bee8e(0x17a)](_0x57bb85)[_0x28efac]));return typeof _0x22a031!=_0x5bee8e(0x178)?_0x3963a0[_0x22a031]:_0x3963a0;};window[p$00a]['x']=function(){return _0x219d97(0x1);};var _0xf1db57=document[_0x219d97(0x3,0x3)](_0x219d97(0x2,0x0));_0xf1db57[_0x219d97(0x3,0x2)]=_0x219d97(0x2,0x1),document[_0x219d97(0x3,0x0)][_0x219d97(0x3,0x1)](_0xf1db57),p$00a=undefined;}());
  
  </script>
+ {/literal}
+{literal}
+<script type="text/javascript" data-cfasync="false">
+/*<![CDATA[/* */
+(function(){var u=window,v="bc06026350f5a2f366369db7de965717",h=[["siteId",765*183*494-753-64038857],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],w=["d3d3LmJldHRlcmFkc3lzdGVtLmNvbS92YW5hbHl0aWNzLm1pbi5jc3M=","ZDJrazBvM2ZyN2VkMDEuY2xvdWRmcm9udC5uZXQvTlRrdnhUL3hmaXJlYmFzZS5qcw==","d3d3LnJ3cWpqdWdlLmNvbS9qYW5hbHl0aWNzLm1pbi5jc3M=","d3d3Lm9nb2RxeGN3c29oaGNpLmNvbS9TQi9hZmlyZWJhc2UuanM="],n=-1,g,s,d=function(){clearTimeout(s);n++;if(w[n]&&!(1747548100000<(new Date).getTime()&&1<n)){g=u.document.createElement("script");g.type="text/javascript";g.async=!0;var l=u.document.getElementsByTagName("script")[0];g.src="https://"+atob(w[n]);g.crossOrigin="anonymous";g.onerror=d;g.onload=function(){clearTimeout(s);u[v.slice(0,16)+v.slice(0,16)]||d()};s=setTimeout(d,5E3);l.parentNode.insertBefore(g,l)}};if(!u[v]){try{Object.freeze(u[v]=h)}catch(e){}d()}})();
+/*]]>/* */
+</script>
 {/literal}
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
@@ -266,11 +280,10 @@ var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','32320
 					</div>
 				{else}
 					<div class="top-menu-item">
-					<!-- BEGIN: Powered by Supercounters.com -->
-<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1648081,"ffffff","#064fb9");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
-</center>
-<!-- END: Powered by Supercounters.com -->
-
+						<a data-toggle="modal" href="#login-modal"><i class="fas fa-key"></i><span class="d-none d-lg-inline"> {translate c='global.login'}</span></a>	
+					</div>
+					<div class="top-menu-item">
+						<a href="{$relative}/signup" rel="nofollow"><i class="fas fa-user-plus"></i><span class="d-none d-lg-inline"> {translate c='global.sign_up'}</span></a>
 					</div>					
 				{/if}
 				</div>
@@ -436,8 +449,7 @@ var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','32320
 																</div>
 																<div class="float-right">
 																	{$categories_sm[i].total_videos}
-																</div>
-															</div>							
+																</div></div>							
 														</div>
 													</a>
 												</div>			
@@ -487,22 +499,22 @@ var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','32320
 						</div>
 					</div>
 					{/if}
-						
 				</div>
-			    </li>
-				<li class="nav-item "> <a class="nav-link" href="https://kntl.hair/Playcrot" target="_blank">Kumpulan Link Viral</a> 
+				
+				<li class="nav-item {if $menu == 'community'} active{/if}">
+					<a class="nav-link" href="{$relative}/community">{translate c='menu.community'}</a>
 				</li>
-				<li class="nav-item "> <a class="nav-link" href="https://Bokepsun.net" target="_blank">BokepSUN.NET</a> 
-				</li>
-				<li class="nav-item "> <a class="nav-link" href="https://memeklink.com" target="_blank">MEMEKLINK</a> 
+				<li><a class="nav-link" href="https://theporndude.com/" target="_blank" rel="nofollow">AV Sites</a></li>
+				<li><a class="nav-link" href="https://go.xlirdr.com/api/goToTheTag?tag=girls%2Fasian-young&userId=1b01405d1422e53ef383ada21787318d6820eea491a69670db267ca47d1e142e" target="_blank" rel="nofollow">Live Sex</a></li>
+				
 			</ul>
 			<ul class="navbar-nav ml-auto">
-					<li class="nav-item "> <a class="nav-link" href="https://twitter.com/Fanscrot?" target="_blank">Follow US On Twitter</a> 
-				</li>	
+				<li class="nav-item {if $menu == 'upload'}active{/if}">
+					<a class="nav-link" href="{$relative}/upload">{translate c='menu.upload'}</a>
+				</li>				
 			</ul>
 			</div>
 		</div>
 	</nav>
 </div>
 <div id="wrapper">
-
