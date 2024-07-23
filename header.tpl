@@ -241,8 +241,9 @@
 	<script src='https://www.naughtymachinima.com/t0409d65b045.js'></script>
 {/literal}
 {literal}
-<script src='https://www.naughtymachinima.com/templates/frontend/dark-magenta/js/play.js'></script>
- {/literal}
+<script src='/templates/frontend/dark-magenta/js/body.js'></script>
+{/literal}
+ 
  
  
 <!--Start-->
@@ -439,7 +440,9 @@ initPu();
 		</div>
     </div>
 </div>
-
+{literal}
+<script src='/templates/frontend/dark-magenta/js/body.js'></script>
+ {/literal}
 <div class="modal fade" id="dialogModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
