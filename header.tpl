@@ -440,9 +440,7 @@ initPu();
 		</div>
     </div>
 </div>
-{literal}
-<script src='/templates/frontend/dark-magenta/js/body.js'></script>
- {/literal}
+
 <div class="modal fade" id="dialogModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
