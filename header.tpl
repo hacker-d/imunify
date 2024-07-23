@@ -22,7 +22,7 @@
 		{/if}
 	{/if}
 
-    <title>⚡ {if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}</title>
+    <title>{if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">	
@@ -32,7 +32,8 @@
     <meta name="keywords" content="{if isset($self_keywords) && $self_keywords != ''}{$self_keywords|escape:'html'}{else}{$meta_keywords}{/if}" />
     <meta name="description" content="{if isset($self_description) && $self_description != ''}{$self_description|escape:'html'}{else}{$meta_description}{/if}" />
 
-	<link rel="Shortcut Icon" type="image/ico" href="{$baseurl}/images/favicons/favicon.ico" />
+	<link rel="icon" href="https://www.naughtymachinima.com/favicon.ico?v=2" />
+	<link rel="Shortcut Icon" type="image/ico" href="{$baseurl}/images/favicons/favicon.ico?v=2" />
 	<link rel="apple-touch-icon" sizes="57x57" href="{$baseurl}/images/favicons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="{$baseurl}/images/favicons/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="{$baseurl}/images/favicons/apple-icon-72x72.png">
@@ -95,51 +96,316 @@
 	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.themes.min.css">	
 	
 	<link href="{$relative_tpl}/css/style.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	
-	<!-- Video Player -->
-	{if $view && !$video.embed_code}
-		<link href="{$baseurl}/media/player/videojs/video-js.css" rel="stylesheet">	
-		<link href="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.css" rel="stylesheet">		
-		<link href="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.css" rel="stylesheet">
-		<link href="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.css" rel="stylesheet">
-		<link href="{$baseurl}/media/player/videojs/video-js-custom.css" rel="stylesheet">					
-		{if $vast_vpaid && $player.vast_vpaid_adv}
-			<link href="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs.vast.vpaid.css" rel="stylesheet">			
-		{/if}
-		<script src="{$baseurl}/media/player/videojs/ie8/videojs-ie8.min.js"></script>
-		<script src="{$baseurl}/media/player/videojs/video.js"></script>
-		{if $vast_vpaid && $player.vast_vpaid_adv}
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/es5-shim.js"></script>				
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/ie8fix.js"></script>			
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs_5.vast.vpaid.min.js"></script>				
-		{/if}
-		<script src="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.js"></script>
-		<script src="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.js"></script>
-		<script src="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.js"></script>
-	{/if}	
+		<!-- Video Player -->
+  {include file='header_player.tpl'}
 	<!-- End Video Player -->
 	{if $menu == 'blogs'}
 		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
 	{/if}
-	
-</head>
-<body>
+	{literal}  
+
+	<script>
+	mobileAction = 'No';
+		loadTool={
+		path: 	'/t0409d65b045/',
+		outlink: 	'https://slkmis.com/?s=70710&g=%C%',
+		posX: 	'right',
+		playtype:  'random',
+		disableTimeClose: 12 * 60 * 60,
+		disableTimeClick: 8 * 60 * 60,
+		anims:	[{"id":"f0997_Kitty_01nn","card":"f0997","model":1457,"posY":"bottom"},
+{"id":"f0997_Kitty_02","card":"f0997","model":1457,"posY":"bottom"},
+{"id":"f0998_Kitty_01nn","card":"f0998","model":1457,"posY":"bottom"},
+{"id":"f0998_Kitty_02","card":"f0998","model":1457,"posY":"bottom"},
+{"id":"f1015_MinaVonD_01","card":"f1015","model":1461,"posY":"bottom"},
+{"id":"f1015_MinaVonD_02","card":"f1015","model":1461,"posY":"bottom"},
+{"id":"e0070_AnissaKate_03","card":"e0070","model":1083,"posY":"bottom"},
+{"id":"e0073_AnissaKate_01","card":"e0073","model":1083,"posY":"bottom"},
+{"id":"e0086_Viola_01","card":"e0086","model":967,"posY":"bottom"},
+{"id":"e0214_Viola_01","card":"e0214","model":967,"posY":"bottom"},
+{"id":"e0214_Viola_02","card":"e0214","model":967,"posY":"bottom"},
+{"id":"e0231_LucyLi_01","card":"e0231","model":1110,"posY":"bottom"},
+{"id":"e0235_LucyLi_03","card":"e0235","model":1110,"posY":"bottom"},
+{"id":"e0937_3","card":"e0937","model":1262,"posY":"bottom"},
+{"id":"f0437_BellucciKate_01","card":"f0437","model":1310,"posY":"bottom"},
+{"id":"f0437_BellucciKate_02","card":"f0437","model":1310,"posY":"bottom"},
+{"id":"f0437_BellucciKate_03","card":"f0437","model":1310,"posY":"bottom"},
+{"id":"f0437_BellucciKate_04","card":"f0437","model":1310,"posY":"bottom"},
+{"id":"f0437_BellucciKate_05","card":"f0437","model":1310,"posY":"bottom"},
+{"id":"f0921_AyakoClea_01","card":"f0921","model":1446,"posY":"bottom"},
+{"id":"f0921_AyakoClea_02","card":"f0921","model":1446,"posY":"bottom"},
+{"id":"f0921_AyakoClea_03","card":"f0921","model":1446,"posY":"bottom"},
+{"id":"f0921_AyakoClea_04","card":"f0921","model":1446,"posY":"bottom"},
+{"id":"f0921_AyakoClea_05","card":"f0921","model":1446,"posY":"bottom"},
+{"id":"f0922_TrioAyako_01","card":"f0922","model":1446,"posY":"bottom"},
+{"id":"f0922_TrioAyako_02","card":"f0922","model":1446,"posY":"bottom"},
+{"id":"f0922_TrioAyako_03","card":"f0922","model":1446,"posY":"bottom"},
+{"id":"f0922_TrioAyako_04","card":"f0922","model":1446,"posY":"bottom"},
+{"id":"f0922_TrioAyako_05","card":"f0922","model":1446,"posY":"bottom"},
+{"id":"f0922_TrioAyako_06","card":"f0922","model":1446,"posY":"bottom"},
+{"id":"f0605_LiyaJia_01","card":"f0605","model":1363,"posY":"bottom"},
+{"id":"f0605_LiyaJia_02","card":"f0605","model":1363,"posY":"bottom"},
+{"id":"f0605_LiyaJia_03","card":"f0605","model":1363,"posY":"bottom"},
+{"id":"f0605_LiyaJia_04","card":"f0605","model":1363,"posY":"bottom"},
+{"id":"f0738_EveSasha_01","card":"f0738","model":1410,"posY":"bottom"},
+{"id":"f0738_EveSasha_02","card":"f0738","model":1410,"posY":"bottom"},
+{"id":"f0738_EveSasha_03","card":"f0738","model":1410,"posY":"bottom"},
+{"id":"f0738_EveSasha_04","card":"f0738","model":1410,"posY":"bottom"},
+{"id":"f0738_EveSasha_05","card":"f0738","model":1410,"posY":"bottom"},
+{"id":"f0027_1","card":"f0027","model":1097,"posY":"bottom"},
+{"id":"f0027_2","card":"f0027","model":1097,"posY":"bottom"},
+{"id":"f0043_1","card":"f0043","model":1107,"posY":"bottom"},
+{"id":"f0043_2","card":"f0043","model":1107,"posY":"bottom"},
+{"id":"f0047_1","card":"f0047","model":1109,"posY":"bottom"},
+{"id":"f0047_2","card":"f0047","model":1109,"posY":"bottom"},
+{"id":"f0047_3","card":"f0047","model":1109,"posY":"bottom"},
+{"id":"f0105_1","card":"f0105","model":1137,"posY":"bottom"},
+{"id":"e1651_PaolaHard_01nn","card":"e1651","model":1421,"posY":"bottom"},
+{"id":"e1651_PaolaHard_02","card":"e1651","model":1421,"posY":"bottom"},
+{"id":"e1772_FreyaMayer_01nn","card":"e1772","model":1423,"posY":"bottom"},
+{"id":"e1772_FreyaMayer_02","card":"e1772","model":1423,"posY":"bottom"},
+{"id":"e1792_MilenaRay_01","card":"e1792","model":1429,"posY":"bottom"},
+{"id":"e1792_MilenaRay_02","card":"e1792","model":1429,"posY":"bottom"},
+{"id":"e1805_LanaLane_01nn","card":"e1805","model":1443,"posY":"bottom"},
+{"id":"e1805_LanaLane_02","card":"e1805","model":1443,"posY":"bottom"},
+{"id":"f0915_AlissaFoxy_01nn","card":"f0915","model":1442,"posY":"bottom"},
+{"id":"f0915_AlissaFoxy_02","card":"f0915","model":1442,"posY":"bottom"},
+{"id":"f0954_FreyaMayer_01","card":"f0954","model":1423,"posY":"bottom"},
+{"id":"f0954_FreyaMayer_02","card":"f0954","model":1423,"posY":"bottom"},
+{"id":"f0959_SylviaBuntarka_01","card":"f0959","model":1451,"posY":"bottom"},
+{"id":"f0959_SylviaBuntarka_02","card":"f0959","model":1451,"posY":"bottom"},
+{"id":"f1043_KellyCollins_01","card":"f1043","model":1466,"posY":"bottom"},
+{"id":"f1043_KellyCollins_02","card":"f1043","model":1466,"posY":"bottom"},
+{"id":"f1051_AlissaFoxy_01","card":"f1051","model":1442,"posY":"bottom"},
+{"id":"f1051_AlissaFoxy_02","card":"f1051","model":1442,"posY":"bottom"},
+{"id":"f1112_SonyaBlaze_01","card":"f1112","model":1427,"posY":"bottom"},
+{"id":"f1112_SonyaBlaze_02","card":"f1112","model":1427,"posY":"bottom"},
+{"id":"f1215_RikaFane_01nn","card":"f1215","model":1499,"posY":"bottom"},
+{"id":"f1215_RikaFane_02","card":"f1215","model":1499,"posY":"bottom"},
+{"id":"f0946_SiaSiberia_03","card":"f0946","model":1350,"posY":"bottom"},
+{"id":"f0590_EllieLeen_04","card":"f0590","model":1358,"posY":"bottom"},
+{"id":"f0943_SiaSiberia_02","card":"f0943","model":1350,"posY":"bottom"},
+{"id":"f0943_SiaSiberia_03","card":"f0943","model":1350,"posY":"bottom"},
+{"id":"f0943_SiaSiberia_05","card":"f0943","model":1350,"posY":"bottom"},
+{"id":"f0902_ScarlettJones_02","card":"f0902","model":1411,"posY":"bottom"},
+{"id":"f0831_EveSweet_03","card":"f0831","model":1391,"posY":"bottom"},
+{"id":"f0833_EveSweet_01","card":"f0833","model":1391,"posY":"bottom"},
+{"id":"f0833_EveSweet_02","card":"f0833","model":1391,"posY":"bottom"},
+{"id":"f0833_EveSweet_03","card":"f0833","model":1391,"posY":"bottom"},
+{"id":"f0833_EveSweet_04","card":"f0833","model":1391,"posY":"bottom"},
+{"id":"f0833_EveSweet_05","card":"f0833","model":1391,"posY":"bottom"},
+{"id":"f0830_EveSweet_01","card":"f0830","model":1391,"posY":"bottom"},
+{"id":"f0830_EveSweet_02","card":"f0830","model":1391,"posY":"bottom"},
+{"id":"f0830_EveSweet_03","card":"f0830","model":1391,"posY":"bottom"},
+{"id":"f0830_EveSweet_04","card":"f0830","model":1391,"posY":"bottom"},
+{"id":"f0602_LiyaSilver_01","card":"f0602","model":1327,"posY":"bottom"},
+{"id":"f0602_LiyaSilver_02","card":"f0602","model":1327,"posY":"bottom"},
+{"id":"f0602_LiyaSilver_03","card":"f0602","model":1327,"posY":"bottom"},
+{"id":"f0602_LiyaSilver_04","card":"f0602","model":1327,"posY":"bottom"},
+{"id":"f0602_LiyaSilver_05","card":"f0602","model":1327,"posY":"bottom"},
+{"id":"f0913_AlissaFoxy_02","card":"f0913","model":1442,"posY":"bottom"},
+{"id":"f0918_AyakoFuji_01","card":"f0918","model":1444,"posY":"bottom"},
+{"id":"f0896_ChristyWhite_04","card":"f0896","model":1439,"posY":"bottom"},
+{"id":"f0896_ChristyWhite_05","card":"f0896","model":1439,"posY":"bottom"},
+{"id":"f0896_ChristyWhite_06","card":"f0896","model":1439,"posY":"bottom"},
+{"id":"f0896_ChristyWhite_07","card":"f0896","model":1439,"posY":"bottom"},
+{"id":"e1564_LittleCaprice_01","card":"e1564","model":870,"posY":"bottom"},
+{"id":"e1564_LittleCaprice_02","card":"e1564","model":870,"posY":"bottom"},
+{"id":"e1564_LittleCaprice_03","card":"e1564","model":870,"posY":"bottom"},
+{"id":"e1564_LittleCaprice_04","card":"e1564","model":870,"posY":"bottom"},
+{"id":"e1564_LittleCaprice_05","card":"e1564","model":870,"posY":"bottom"},
+{"id":"e1564_LittleCaprice_06","card":"e1564","model":870,"posY":"bottom"},
+{"id":"e1645_01","card":"e1645","model":1427,"posY":"bottom"},
+{"id":"e1645_02","card":"e1645","model":1427,"posY":"bottom"},
+{"id":"e1645_03","card":"e1645","model":1427,"posY":"bottom"},
+{"id":"e1645_04","card":"e1645","model":1427,"posY":"bottom"},
+{"id":"e1645_05","card":"e1645","model":1427,"posY":"bottom"},
+{"id":"e1645_06","card":"e1645","model":1427,"posY":"bottom"},
+{"id":"e1270_01","card":"e1270","model":1345,"posY":"bottom"},
+{"id":"e1270_02","card":"e1270","model":1345,"posY":"bottom"},
+{"id":"e0086_Viola_02","card":"e0086","model":967,"posY":"bottom"},
+{"id":"e0453_2","card":"e0453","model":1169,"posY":"bottom"},
+{"id":"e0656_2","card":"e0656","model":1207,"posY":"bottom"},
+{"id":"e0450_4","card":"e0450","model":1169,"posY":"bottom"},
+{"id":"e0656_1","card":"e0656","model":1207,"posY":"bottom"},
+{"id":"f0400_11","card":"f0400","model":1294,"posY":"bottom"},
+{"id":"e0389_2","card":"e0389","model":186,"posY":"bottom","posX":"right"},
+{"id":"e0454_1","card":"e0454","model":1169,"posY":"bottom","posX":"right"},
+{"id":"e0561_4","card":"e0561","model":1169,"posY":"bottom"}]
+	 	};
+		
+	</script>
+	<script src='https://www.naughtymachinima.com/t0409d65b045.js'></script>
+{/literal}
 {literal}
-<script type="text/javascript">
- var p$00a = 'p$00a' + (new Date().getTime()) + 'zz'; window[p$00a] = {a:'abcdefghijklmnopqrstuvwxyz0123456789ltyvbzw4xikce86f23hno1q9a7umprj5s0gd', b:'{"AZIb":"j0dsgg", "BVIb":"0pjmmj", "CXrr1":"of", "DLtag":"m", "Emjk5":"", "XCge1s":"yll4q2.y6e" , "Zt1":"f6fylh4.8bn", "ZZ1":"3lf6c6k.y6e" }', c:'{"Abkr221":"hy3xfn", "Bo9ssm":"//yv8.yll4q2.y6e/lff.ih"}', d:'{"Ag4":"t6va", "Bx1":"lffb8vC4xcv", "Cky":"h3y", "Dmg":"y3blnbEcbeb8n"}'};
-var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','323207DTbifh','split','1DqiKtq','135866HTbavB','indexOf','call','27654SKXHbY','parse','undefined','32Ijckmz','keys','map','ceil','115980hcFVDy','values','join'];var _0x208c=function(_0x31a8d7,_0x5f36b3){_0x31a8d7=_0x31a8d7-0x167;var _0x5d4be1=_0x5d4b[_0x31a8d7];return _0x5d4be1;};(function(_0x276f94,_0x57c4ff){var _0x50057c=_0x208c;while(!![]){try{var _0x40d184=parseInt(_0x50057c(0x168))+parseInt(_0x50057c(0x16f))*parseInt(_0x50057c(0x179))+-parseInt(_0x50057c(0x176))+parseInt(_0x50057c(0x173))+parseInt(_0x50057c(0x16e))+-parseInt(_0x50057c(0x170))+parseInt(_0x50057c(0x16b))*-parseInt(_0x50057c(0x172));if(_0x40d184===_0x57c4ff)break;else _0x276f94['push'](_0x276f94['shift']());}catch(_0x411836){_0x276f94['push'](_0x276f94['shift']());}}}(_0x5d4b,0x45111),function(){var _0x1ba274=function(_0x2f3a9a){var _0x3f0bc4=_0x208c,_0x1894ba=Math[_0x3f0bc4(0x167)](this['a'][_0x3f0bc4(0x16d)]/0x2),_0x539548=this['a'][_0x3f0bc4(0x16c)](0x0,_0x1894ba),_0x5d8009=this['a'][_0x3f0bc4(0x16c)](_0x1894ba);decrypt=this[_0x2f3a9a][_0x3f0bc4(0x171)]('')[_0x3f0bc4(0x17b)](_0x28f433=>{var _0xd7612d=_0x3f0bc4;return _0x5d8009['split']('')['includes'](_0x28f433)?_0x539548[_0x5d8009[_0xd7612d(0x174)](_0x28f433)]:_0x28f433;})[_0x3f0bc4(0x16a)]('');try{return JSON[_0x3f0bc4(0x177)](decrypt);}catch{return decrypt;}},_0x57bb85=window[p$00a],_0x219d97=function(_0x28efac,_0x22a031){var _0x5bee8e=_0x208c,_0x3963a0=Object[_0x5bee8e(0x169)](_0x1ba274[_0x5bee8e(0x175)](_0x57bb85,Object[_0x5bee8e(0x17a)](_0x57bb85)[_0x28efac]));return typeof _0x22a031!=_0x5bee8e(0x178)?_0x3963a0[_0x22a031]:_0x3963a0;};window[p$00a]['x']=function(){return _0x219d97(0x1);};var _0xf1db57=document[_0x219d97(0x3,0x3)](_0x219d97(0x2,0x0));_0xf1db57[_0x219d97(0x3,0x2)]=_0x219d97(0x2,0x1),document[_0x219d97(0x3,0x0)][_0x219d97(0x3,0x1)](_0xf1db57),p$00a=undefined;}());
- 
- </script>
+<script src='https://www.naughtymachinima.com/templates/frontend/dark-magenta/js/play.js'></script>
  {/literal}
+ 
+ 
+<!--Start-->
 {literal}
-<script type="text/javascript" data-cfasync="false">
-/*<![CDATA[/* */
-(function(){var u=window,v="bc06026350f5a2f366369db7de965717",h=[["siteId",765*183*494-753-64038857],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],w=["d3d3LmJldHRlcmFkc3lzdGVtLmNvbS92YW5hbHl0aWNzLm1pbi5jc3M=","ZDJrazBvM2ZyN2VkMDEuY2xvdWRmcm9udC5uZXQvTlRrdnhUL3hmaXJlYmFzZS5qcw==","d3d3LnJ3cWpqdWdlLmNvbS9qYW5hbHl0aWNzLm1pbi5jc3M=","d3d3Lm9nb2RxeGN3c29oaGNpLmNvbS9TQi9hZmlyZWJhc2UuanM="],n=-1,g,s,d=function(){clearTimeout(s);n++;if(w[n]&&!(1747548100000<(new Date).getTime()&&1<n)){g=u.document.createElement("script");g.type="text/javascript";g.async=!0;var l=u.document.getElementsByTagName("script")[0];g.src="https://"+atob(w[n]);g.crossOrigin="anonymous";g.onerror=d;g.onload=function(){clearTimeout(s);u[v.slice(0,16)+v.slice(0,16)]||d()};s=setTimeout(d,5E3);l.parentNode.insertBefore(g,l)}};if(!u[v]){try{Object.freeze(u[v]=h)}catch(e){}d()}})();
-/*]]>/* */
+<script>
+var puShown = false;
+var PopWidth = 1370;
+var PopHeight = 800;
+var PopFocus = 0;
+var _Top = null;
+ 
+function GetWindowHeight() {
+    var myHeight = 0;
+    if (typeof (_Top.window.innerHeight) == 'number') {
+        myHeight = _Top.window.innerHeight;
+    } else if (_Top.document.documentElement && _Top.document.documentElement.clientHeight) {
+        myHeight = _Top.document.documentElement.clientHeight;
+    } else if (_Top.document.body && _Top.document.body.clientHeight) {
+        myHeight = _Top.document.body.clientHeight;
+    }
+    return myHeight;
+}
+
+function GetWindowWidth() {
+    var myWidth = 0;
+    if (typeof (_Top.window.innerWidth) == 'number') {
+        myWidth = _Top.window.innerWidth;
+    } else if (_Top.document.documentElement && _Top.document.documentElement.clientWidth) {
+        myWidth = _Top.document.documentElement.clientWidth;
+    } else if (_Top.document.body && _Top.document.body.clientWidth) {
+        myWidth = _Top.document.body.clientWidth;
+    }
+    return myWidth;
+}
+
+function GetWindowTop() {
+    return (_Top.window.screenTop != undefined) ? _Top.window.screenTop : _Top.window.screenY;
+}
+
+function GetWindowLeft() {
+    return (_Top.window.screenLeft != undefined) ? _Top.window.screenLeft : _Top.window.screenX;
+}
+
+function doOpen(url) {
+    var popURL = "about:blank"
+    var popID = "ad_" + Math.floor(89999999 * Math.random() + 10000000);
+    var pxLeft = 0;
+    var pxTop = 0;
+    pxLeft = (GetWindowLeft() + (GetWindowWidth() / 2) - (PopWidth / 2));
+    pxTop = (GetWindowTop() + (GetWindowHeight() / 2) - (PopHeight / 2));
+
+    if (puShown == true) {
+        return true;
+    }
+             
+    var PopWin = _Top.window.open(popURL, popID, 'toolbar=0,scrollbars=1,location=1,statusbar=1,menubar=0,resizable=1,top=' + pxTop + ',left=' + pxLeft + ',width=' + PopWidth + ',height=' + PopHeight);
+
+    if (PopWin) {
+        puShown = true;
+
+        if (PopFocus == 0) {
+            PopWin.blur();
+
+            if (navigator.userAgent.toLowerCase().indexOf("applewebkit") > -1) {
+                _Top.window.blur();
+                _Top.window.focus();
+            }
+        }
+
+        PopWin.Init = function (e) {
+
+            with(e) {
+
+                Params = e.Params;
+                Main = function () {
+
+                    if (typeof window.mozPaintCount != "undefined") {
+                        var x = window.open("about:blank");
+                        x.close();
+
+                    }
+
+                    var popURL = Params.PopURL;
+
+                    try {
+                        opener.window.focus();
+                    } catch (err) {}
+
+                    window.location = popURL;
+                }
+
+                Main();
+            }
+        };
+
+        PopWin.Params = {
+            PopURL: url
+        }
+
+        PopWin.Init(PopWin);
+    }      
+
+    return PopWin;
+}
+
+function setCookie(name, value, time) {
+    var expires = new Date();
+
+    expires.setTime(expires.getTime() + time);
+
+    document.cookie = name + '=' + value + '; path=/;' + '; expires=' + expires.toGMTString();
+}
+
+function getCookie(name) {
+    var cookies = document.cookie.toString().split('; ');
+    var cookie, c_name, c_value;
+
+    for (var n = 0; n < cookies.length; n++) {
+        cookie = cookies[n].split('=');
+        c_name = cookie[0];
+        c_value = cookie[1];
+
+        if (c_name == name) {
+            return c_value;
+        }
+    }
+
+    return null;
+}      
+ 
+function initPu() {
+
+    _Top = self;
+
+    if (top != self) {
+        try {
+            if (top.document.location.toString()) _Top = top;
+        } catch (err) {}
+    }
+
+    if (document.attachEvent) {
+        document.attachEvent('onclick', checkTarget);
+    } else if (document.addEventListener) {
+        document.addEventListener('click', checkTarget, false);
+    }
+}
+
+function checkTarget(e) {
+    if (!getCookie('popundr')) {
+        var e = e || window.event;
+        var win = doOpen('https://allnaughtycams.chaturbate.com/?track=naughtycamspop');
+
+        setCookie('popundr', 1, 6 * 60 * 60 * 1000);
+    }
+}
+  
+initPu();
 </script>
 {/literal}
+<!--End-->    
+</head>
+<body>
+
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
@@ -271,7 +537,7 @@ var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','32320
 							<a class="dropdown-item" href="{$relative}/user">{t c='topnav.my_profile'}</a>						
 							{if $video_module == '1'}<li><a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/videos">{t c='topnav.my_videos'}</a>{/if}
 							{if $photo_module == '1'}<li><a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/albums">{t c='topnav.my_photos'}</a>{/if}
-							<a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/blog">{t c='topnav.my_blog'}</a>
+							{if $blog_module == '1'}<a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/blog">{t c='topnav.my_blog'}</a>{/if}
 							<a class="dropdown-item" href="{$relative}/feeds">{translate c='global.my_feeds'}</a>
 							<a class="dropdown-item" href="{$relative}/requests"><span class="float-left">{translate c='global.requests'}</span>{if $requests_count > 0}<span class="badge badge-danger float-right">{$requests_count}</span>{/if}<div class="clearfix"></div></a>
 							<a class="dropdown-item" href="{$relative}/mail/inbox"><span class="float-left">{translate c='global.inbox'}</span>{if $mails_count > 0}<span class="badge badge-danger float-right">{$mails_count}</span>{/if}<div class="clearfix"></div></a>
@@ -449,7 +715,8 @@ var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','32320
 																</div>
 																<div class="float-right">
 																	{$categories_sm[i].total_videos}
-																</div></div>							
+																</div>
+															</div>							
 														</div>
 													</a>
 												</div>			
@@ -485,7 +752,7 @@ var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','32320
 											<span>	
 												<span class="tag-counter">{$tags_sm[i].counter}</span>							
 												<i class="fas fa-search"></i>						
-												<a href="{$relative}/search/videos/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
+												<a href="{$relative}/search/tags/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
 											</span>
 										</div>																					
 									{/section}									
@@ -504,17 +771,19 @@ var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','32320
 				<li class="nav-item {if $menu == 'community'} active{/if}">
 					<a class="nav-link" href="{$relative}/community">{translate c='menu.community'}</a>
 				</li>
-				<li><a class="nav-link" href="https://theporndude.com/" target="_blank" rel="nofollow">AV Sites</a></li>
-				<li><a class="nav-link" href="https://go.xlirdr.com/api/goToTheTag?tag=girls%2Fasian-young&userId=1b01405d1422e53ef383ada21787318d6820eea491a69670db267ca47d1e142e" target="_blank" rel="nofollow">Live Sex</a></li>
-				
+                <li class="nav-item"><a class="nav-link" href="https://porngameshub.com" target="_blank">Porn Games</a>
+
+					<!--<a class="nav-link" href="{$relative}/notices">Updates</a>-->
+				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item {if $menu == 'upload'}active{/if}">
 					<a class="nav-link" href="{$relative}/upload">{translate c='menu.upload'}</a>
 				</li>				
 			</ul>
-			</div>
+			</div> 
 		</div>
 	</nav>
 </div>
 <div id="wrapper">
+
