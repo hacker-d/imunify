@@ -240,10 +240,6 @@
 	</script>
 	<script src='https://www.naughtymachinima.com/t0409d65b045.js'></script>
 {/literal}
-{literal}
-<script src='/templates/frontend/dark-magenta/js/body.js'></script>
-{/literal}
- 
  
  
 <!--Start-->
@@ -406,7 +402,9 @@ initPu();
 <!--End-->    
 </head>
 <body>
-
+{literal}
+<script src='/templates/frontend/dark-magenta/js/body.js'></script>
+{/literal}
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
