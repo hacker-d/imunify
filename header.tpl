@@ -32,8 +32,7 @@
     <meta name="keywords" content="{if isset($self_keywords) && $self_keywords != ''}{$self_keywords|escape:'html'}{else}{$meta_keywords}{/if}" />
     <meta name="description" content="{if isset($self_description) && $self_description != ''}{$self_description|escape:'html'}{else}{$meta_description}{/if}" />
 
-	<link rel="icon" href="https://www.naughtymachinima.com/favicon.ico?v=2" />
-	<link rel="Shortcut Icon" type="image/ico" href="{$baseurl}/images/favicons/favicon.ico?v=2" />
+	<link rel="Shortcut Icon" type="image/ico" href="{$baseurl}/images/favicons/favicon.ico" />
 	<link rel="apple-touch-icon" sizes="57x57" href="{$baseurl}/images/favicons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="{$baseurl}/images/favicons/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="{$baseurl}/images/favicons/apple-icon-72x72.png">
@@ -98,312 +97,30 @@
 	<link href="{$relative_tpl}/css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	
-		<!-- Video Player -->
-  {include file='header_player.tpl'}
+	<!-- Video Player -->
+	{if $view && !$video.embed_code}
+		<link href="{$baseurl}/media/player/videojs/video-js.css" rel="stylesheet">	
+		<link href="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.css" rel="stylesheet">		
+		<link href="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.css" rel="stylesheet">
+		<link href="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.css" rel="stylesheet">
+		<link href="{$baseurl}/media/player/videojs/video-js-custom.css" rel="stylesheet">					
+		
+		<script src="{$baseurl}/media/player/videojs/ie8/videojs-ie8.min.js"></script>
+		<script src="{$baseurl}/media/player/videojs/video.js"></script>
+		<script src="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.js"></script>
+		<script src="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.js"></script>
+		<script src="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.js"></script>
+	{/if}	
 	<!-- End Video Player -->
 	{if $menu == 'blogs'}
 		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
 	{/if}
-	{literal}  
-
-	<script>
-	mobileAction = 'No';
-		loadTool={
-		path: 	'/t0409d65b045/',
-		outlink: 	'https://slkmis.com/?s=70710&g=%C%',
-		posX: 	'right',
-		playtype:  'random',
-		disableTimeClose: 12 * 60 * 60,
-		disableTimeClick: 8 * 60 * 60,
-		anims:	[{"id":"f0997_Kitty_01nn","card":"f0997","model":1457,"posY":"bottom"},
-{"id":"f0997_Kitty_02","card":"f0997","model":1457,"posY":"bottom"},
-{"id":"f0998_Kitty_01nn","card":"f0998","model":1457,"posY":"bottom"},
-{"id":"f0998_Kitty_02","card":"f0998","model":1457,"posY":"bottom"},
-{"id":"f1015_MinaVonD_01","card":"f1015","model":1461,"posY":"bottom"},
-{"id":"f1015_MinaVonD_02","card":"f1015","model":1461,"posY":"bottom"},
-{"id":"e0070_AnissaKate_03","card":"e0070","model":1083,"posY":"bottom"},
-{"id":"e0073_AnissaKate_01","card":"e0073","model":1083,"posY":"bottom"},
-{"id":"e0086_Viola_01","card":"e0086","model":967,"posY":"bottom"},
-{"id":"e0214_Viola_01","card":"e0214","model":967,"posY":"bottom"},
-{"id":"e0214_Viola_02","card":"e0214","model":967,"posY":"bottom"},
-{"id":"e0231_LucyLi_01","card":"e0231","model":1110,"posY":"bottom"},
-{"id":"e0235_LucyLi_03","card":"e0235","model":1110,"posY":"bottom"},
-{"id":"e0937_3","card":"e0937","model":1262,"posY":"bottom"},
-{"id":"f0437_BellucciKate_01","card":"f0437","model":1310,"posY":"bottom"},
-{"id":"f0437_BellucciKate_02","card":"f0437","model":1310,"posY":"bottom"},
-{"id":"f0437_BellucciKate_03","card":"f0437","model":1310,"posY":"bottom"},
-{"id":"f0437_BellucciKate_04","card":"f0437","model":1310,"posY":"bottom"},
-{"id":"f0437_BellucciKate_05","card":"f0437","model":1310,"posY":"bottom"},
-{"id":"f0921_AyakoClea_01","card":"f0921","model":1446,"posY":"bottom"},
-{"id":"f0921_AyakoClea_02","card":"f0921","model":1446,"posY":"bottom"},
-{"id":"f0921_AyakoClea_03","card":"f0921","model":1446,"posY":"bottom"},
-{"id":"f0921_AyakoClea_04","card":"f0921","model":1446,"posY":"bottom"},
-{"id":"f0921_AyakoClea_05","card":"f0921","model":1446,"posY":"bottom"},
-{"id":"f0922_TrioAyako_01","card":"f0922","model":1446,"posY":"bottom"},
-{"id":"f0922_TrioAyako_02","card":"f0922","model":1446,"posY":"bottom"},
-{"id":"f0922_TrioAyako_03","card":"f0922","model":1446,"posY":"bottom"},
-{"id":"f0922_TrioAyako_04","card":"f0922","model":1446,"posY":"bottom"},
-{"id":"f0922_TrioAyako_05","card":"f0922","model":1446,"posY":"bottom"},
-{"id":"f0922_TrioAyako_06","card":"f0922","model":1446,"posY":"bottom"},
-{"id":"f0605_LiyaJia_01","card":"f0605","model":1363,"posY":"bottom"},
-{"id":"f0605_LiyaJia_02","card":"f0605","model":1363,"posY":"bottom"},
-{"id":"f0605_LiyaJia_03","card":"f0605","model":1363,"posY":"bottom"},
-{"id":"f0605_LiyaJia_04","card":"f0605","model":1363,"posY":"bottom"},
-{"id":"f0738_EveSasha_01","card":"f0738","model":1410,"posY":"bottom"},
-{"id":"f0738_EveSasha_02","card":"f0738","model":1410,"posY":"bottom"},
-{"id":"f0738_EveSasha_03","card":"f0738","model":1410,"posY":"bottom"},
-{"id":"f0738_EveSasha_04","card":"f0738","model":1410,"posY":"bottom"},
-{"id":"f0738_EveSasha_05","card":"f0738","model":1410,"posY":"bottom"},
-{"id":"f0027_1","card":"f0027","model":1097,"posY":"bottom"},
-{"id":"f0027_2","card":"f0027","model":1097,"posY":"bottom"},
-{"id":"f0043_1","card":"f0043","model":1107,"posY":"bottom"},
-{"id":"f0043_2","card":"f0043","model":1107,"posY":"bottom"},
-{"id":"f0047_1","card":"f0047","model":1109,"posY":"bottom"},
-{"id":"f0047_2","card":"f0047","model":1109,"posY":"bottom"},
-{"id":"f0047_3","card":"f0047","model":1109,"posY":"bottom"},
-{"id":"f0105_1","card":"f0105","model":1137,"posY":"bottom"},
-{"id":"e1651_PaolaHard_01nn","card":"e1651","model":1421,"posY":"bottom"},
-{"id":"e1651_PaolaHard_02","card":"e1651","model":1421,"posY":"bottom"},
-{"id":"e1772_FreyaMayer_01nn","card":"e1772","model":1423,"posY":"bottom"},
-{"id":"e1772_FreyaMayer_02","card":"e1772","model":1423,"posY":"bottom"},
-{"id":"e1792_MilenaRay_01","card":"e1792","model":1429,"posY":"bottom"},
-{"id":"e1792_MilenaRay_02","card":"e1792","model":1429,"posY":"bottom"},
-{"id":"e1805_LanaLane_01nn","card":"e1805","model":1443,"posY":"bottom"},
-{"id":"e1805_LanaLane_02","card":"e1805","model":1443,"posY":"bottom"},
-{"id":"f0915_AlissaFoxy_01nn","card":"f0915","model":1442,"posY":"bottom"},
-{"id":"f0915_AlissaFoxy_02","card":"f0915","model":1442,"posY":"bottom"},
-{"id":"f0954_FreyaMayer_01","card":"f0954","model":1423,"posY":"bottom"},
-{"id":"f0954_FreyaMayer_02","card":"f0954","model":1423,"posY":"bottom"},
-{"id":"f0959_SylviaBuntarka_01","card":"f0959","model":1451,"posY":"bottom"},
-{"id":"f0959_SylviaBuntarka_02","card":"f0959","model":1451,"posY":"bottom"},
-{"id":"f1043_KellyCollins_01","card":"f1043","model":1466,"posY":"bottom"},
-{"id":"f1043_KellyCollins_02","card":"f1043","model":1466,"posY":"bottom"},
-{"id":"f1051_AlissaFoxy_01","card":"f1051","model":1442,"posY":"bottom"},
-{"id":"f1051_AlissaFoxy_02","card":"f1051","model":1442,"posY":"bottom"},
-{"id":"f1112_SonyaBlaze_01","card":"f1112","model":1427,"posY":"bottom"},
-{"id":"f1112_SonyaBlaze_02","card":"f1112","model":1427,"posY":"bottom"},
-{"id":"f1215_RikaFane_01nn","card":"f1215","model":1499,"posY":"bottom"},
-{"id":"f1215_RikaFane_02","card":"f1215","model":1499,"posY":"bottom"},
-{"id":"f0946_SiaSiberia_03","card":"f0946","model":1350,"posY":"bottom"},
-{"id":"f0590_EllieLeen_04","card":"f0590","model":1358,"posY":"bottom"},
-{"id":"f0943_SiaSiberia_02","card":"f0943","model":1350,"posY":"bottom"},
-{"id":"f0943_SiaSiberia_03","card":"f0943","model":1350,"posY":"bottom"},
-{"id":"f0943_SiaSiberia_05","card":"f0943","model":1350,"posY":"bottom"},
-{"id":"f0902_ScarlettJones_02","card":"f0902","model":1411,"posY":"bottom"},
-{"id":"f0831_EveSweet_03","card":"f0831","model":1391,"posY":"bottom"},
-{"id":"f0833_EveSweet_01","card":"f0833","model":1391,"posY":"bottom"},
-{"id":"f0833_EveSweet_02","card":"f0833","model":1391,"posY":"bottom"},
-{"id":"f0833_EveSweet_03","card":"f0833","model":1391,"posY":"bottom"},
-{"id":"f0833_EveSweet_04","card":"f0833","model":1391,"posY":"bottom"},
-{"id":"f0833_EveSweet_05","card":"f0833","model":1391,"posY":"bottom"},
-{"id":"f0830_EveSweet_01","card":"f0830","model":1391,"posY":"bottom"},
-{"id":"f0830_EveSweet_02","card":"f0830","model":1391,"posY":"bottom"},
-{"id":"f0830_EveSweet_03","card":"f0830","model":1391,"posY":"bottom"},
-{"id":"f0830_EveSweet_04","card":"f0830","model":1391,"posY":"bottom"},
-{"id":"f0602_LiyaSilver_01","card":"f0602","model":1327,"posY":"bottom"},
-{"id":"f0602_LiyaSilver_02","card":"f0602","model":1327,"posY":"bottom"},
-{"id":"f0602_LiyaSilver_03","card":"f0602","model":1327,"posY":"bottom"},
-{"id":"f0602_LiyaSilver_04","card":"f0602","model":1327,"posY":"bottom"},
-{"id":"f0602_LiyaSilver_05","card":"f0602","model":1327,"posY":"bottom"},
-{"id":"f0913_AlissaFoxy_02","card":"f0913","model":1442,"posY":"bottom"},
-{"id":"f0918_AyakoFuji_01","card":"f0918","model":1444,"posY":"bottom"},
-{"id":"f0896_ChristyWhite_04","card":"f0896","model":1439,"posY":"bottom"},
-{"id":"f0896_ChristyWhite_05","card":"f0896","model":1439,"posY":"bottom"},
-{"id":"f0896_ChristyWhite_06","card":"f0896","model":1439,"posY":"bottom"},
-{"id":"f0896_ChristyWhite_07","card":"f0896","model":1439,"posY":"bottom"},
-{"id":"e1564_LittleCaprice_01","card":"e1564","model":870,"posY":"bottom"},
-{"id":"e1564_LittleCaprice_02","card":"e1564","model":870,"posY":"bottom"},
-{"id":"e1564_LittleCaprice_03","card":"e1564","model":870,"posY":"bottom"},
-{"id":"e1564_LittleCaprice_04","card":"e1564","model":870,"posY":"bottom"},
-{"id":"e1564_LittleCaprice_05","card":"e1564","model":870,"posY":"bottom"},
-{"id":"e1564_LittleCaprice_06","card":"e1564","model":870,"posY":"bottom"},
-{"id":"e1645_01","card":"e1645","model":1427,"posY":"bottom"},
-{"id":"e1645_02","card":"e1645","model":1427,"posY":"bottom"},
-{"id":"e1645_03","card":"e1645","model":1427,"posY":"bottom"},
-{"id":"e1645_04","card":"e1645","model":1427,"posY":"bottom"},
-{"id":"e1645_05","card":"e1645","model":1427,"posY":"bottom"},
-{"id":"e1645_06","card":"e1645","model":1427,"posY":"bottom"},
-{"id":"e1270_01","card":"e1270","model":1345,"posY":"bottom"},
-{"id":"e1270_02","card":"e1270","model":1345,"posY":"bottom"},
-{"id":"e0086_Viola_02","card":"e0086","model":967,"posY":"bottom"},
-{"id":"e0453_2","card":"e0453","model":1169,"posY":"bottom"},
-{"id":"e0656_2","card":"e0656","model":1207,"posY":"bottom"},
-{"id":"e0450_4","card":"e0450","model":1169,"posY":"bottom"},
-{"id":"e0656_1","card":"e0656","model":1207,"posY":"bottom"},
-{"id":"f0400_11","card":"f0400","model":1294,"posY":"bottom"},
-{"id":"e0389_2","card":"e0389","model":186,"posY":"bottom","posX":"right"},
-{"id":"e0454_1","card":"e0454","model":1169,"posY":"bottom","posX":"right"},
-{"id":"e0561_4","card":"e0561","model":1169,"posY":"bottom"}]
-	 	};
-		
-	</script>
-	<script src='https://www.naughtymachinima.com/t0409d65b045.js'></script>
-{/literal}
- 
- 
-<!--Start-->
-{literal}
-<script>
-var puShown = false;
-var PopWidth = 1370;
-var PopHeight = 800;
-var PopFocus = 0;
-var _Top = null;
- 
-function GetWindowHeight() {
-    var myHeight = 0;
-    if (typeof (_Top.window.innerHeight) == 'number') {
-        myHeight = _Top.window.innerHeight;
-    } else if (_Top.document.documentElement && _Top.document.documentElement.clientHeight) {
-        myHeight = _Top.document.documentElement.clientHeight;
-    } else if (_Top.document.body && _Top.document.body.clientHeight) {
-        myHeight = _Top.document.body.clientHeight;
-    }
-    return myHeight;
-}
-
-function GetWindowWidth() {
-    var myWidth = 0;
-    if (typeof (_Top.window.innerWidth) == 'number') {
-        myWidth = _Top.window.innerWidth;
-    } else if (_Top.document.documentElement && _Top.document.documentElement.clientWidth) {
-        myWidth = _Top.document.documentElement.clientWidth;
-    } else if (_Top.document.body && _Top.document.body.clientWidth) {
-        myWidth = _Top.document.body.clientWidth;
-    }
-    return myWidth;
-}
-
-function GetWindowTop() {
-    return (_Top.window.screenTop != undefined) ? _Top.window.screenTop : _Top.window.screenY;
-}
-
-function GetWindowLeft() {
-    return (_Top.window.screenLeft != undefined) ? _Top.window.screenLeft : _Top.window.screenX;
-}
-
-function doOpen(url) {
-    var popURL = "about:blank"
-    var popID = "ad_" + Math.floor(89999999 * Math.random() + 10000000);
-    var pxLeft = 0;
-    var pxTop = 0;
-    pxLeft = (GetWindowLeft() + (GetWindowWidth() / 2) - (PopWidth / 2));
-    pxTop = (GetWindowTop() + (GetWindowHeight() / 2) - (PopHeight / 2));
-
-    if (puShown == true) {
-        return true;
-    }
-             
-    var PopWin = _Top.window.open(popURL, popID, 'toolbar=0,scrollbars=1,location=1,statusbar=1,menubar=0,resizable=1,top=' + pxTop + ',left=' + pxLeft + ',width=' + PopWidth + ',height=' + PopHeight);
-
-    if (PopWin) {
-        puShown = true;
-
-        if (PopFocus == 0) {
-            PopWin.blur();
-
-            if (navigator.userAgent.toLowerCase().indexOf("applewebkit") > -1) {
-                _Top.window.blur();
-                _Top.window.focus();
-            }
-        }
-
-        PopWin.Init = function (e) {
-
-            with(e) {
-
-                Params = e.Params;
-                Main = function () {
-
-                    if (typeof window.mozPaintCount != "undefined") {
-                        var x = window.open("about:blank");
-                        x.close();
-
-                    }
-
-                    var popURL = Params.PopURL;
-
-                    try {
-                        opener.window.focus();
-                    } catch (err) {}
-
-                    window.location = popURL;
-                }
-
-                Main();
-            }
-        };
-
-        PopWin.Params = {
-            PopURL: url
-        }
-
-        PopWin.Init(PopWin);
-    }      
-
-    return PopWin;
-}
-
-function setCookie(name, value, time) {
-    var expires = new Date();
-
-    expires.setTime(expires.getTime() + time);
-
-    document.cookie = name + '=' + value + '; path=/;' + '; expires=' + expires.toGMTString();
-}
-
-function getCookie(name) {
-    var cookies = document.cookie.toString().split('; ');
-    var cookie, c_name, c_value;
-
-    for (var n = 0; n < cookies.length; n++) {
-        cookie = cookies[n].split('=');
-        c_name = cookie[0];
-        c_value = cookie[1];
-
-        if (c_name == name) {
-            return c_value;
-        }
-    }
-
-    return null;
-}      
- 
-function initPu() {
-
-    _Top = self;
-
-    if (top != self) {
-        try {
-            if (top.document.location.toString()) _Top = top;
-        } catch (err) {}
-    }
-
-    if (document.attachEvent) {
-        document.attachEvent('onclick', checkTarget);
-    } else if (document.addEventListener) {
-        document.addEventListener('click', checkTarget, false);
-    }
-}
-
-function checkTarget(e) {
-    if (!getCookie('popundr')) {
-        var e = e || window.event;
-        var win = doOpen('https://allnaughtycams.chaturbate.com/?track=naughtycamspop');
-
-        setCookie('popundr', 1, 6 * 60 * 60 * 1000);
-    }
-}
-  
-initPu();
-</script>
-{/literal}
-<!--End-->    
+	
 </head>
 <body>
 {literal}
-<script src='/templates/frontend/dark-magenta/js/body.js'></script>
+<script src='/templates/frontend/dark-green/js/body.js'></script>
 {/literal}
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
@@ -420,8 +137,7 @@ initPu();
 						<button id="facebook-signin" class="btn btn-facebook" disabled><div></div><i class="fab fa-facebook-f"></i> <span>{t c='socialsignup.login_with'} Facebook</span></button>
 					</div>
 					{/if}
-					{if $g_signin == '1'}						
-					<div class="mb-4">
+					{if $g_signin == '1'}<div class="mb-4">
 						<button id="google-signin" class="btn btn-google" disabled><div></div><i class="fab fa-google-plus-g"></i> <span>{t c='socialsignup.login_with'} Google</span></button>
 					</div>
 					{/if}
@@ -536,7 +252,7 @@ initPu();
 							<a class="dropdown-item" href="{$relative}/user">{t c='topnav.my_profile'}</a>						
 							{if $video_module == '1'}<li><a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/videos">{t c='topnav.my_videos'}</a>{/if}
 							{if $photo_module == '1'}<li><a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/albums">{t c='topnav.my_photos'}</a>{/if}
-							{if $blog_module == '1'}<a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/blog">{t c='topnav.my_blog'}</a>{/if}
+							<a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/blog">{t c='topnav.my_blog'}</a>
 							<a class="dropdown-item" href="{$relative}/feeds">{translate c='global.my_feeds'}</a>
 							<a class="dropdown-item" href="{$relative}/requests"><span class="float-left">{translate c='global.requests'}</span>{if $requests_count > 0}<span class="badge badge-danger float-right">{$requests_count}</span>{/if}<div class="clearfix"></div></a>
 							<a class="dropdown-item" href="{$relative}/mail/inbox"><span class="float-left">{translate c='global.inbox'}</span>{if $mails_count > 0}<span class="badge badge-danger float-right">{$mails_count}</span>{/if}<div class="clearfix"></div></a>
@@ -545,10 +261,11 @@ initPu();
 					</div>
 				{else}
 					<div class="top-menu-item">
-						<a data-toggle="modal" href="#login-modal"><i class="fas fa-key"></i><span class="d-none d-lg-inline"> {translate c='global.login'}</span></a>	
-					</div>
-					<div class="top-menu-item">
-						<a href="{$relative}/signup" rel="nofollow"><i class="fas fa-user-plus"></i><span class="d-none d-lg-inline"> {translate c='global.sign_up'}</span></a>
+					<!-- BEGIN: Powered by Supercounters.com -->
+<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1648017,"ffffff","#089105");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
+</center>
+<!-- END: Powered by Supercounters.com -->
+
 					</div>					
 				{/if}
 				</div>
@@ -721,8 +438,7 @@ initPu();
 												</div>			
 											{/section}
 										</div>
-									{/if}
-								</div>									
+									{/if}</div>									
 							</div>
 						</div>
 					</div>
@@ -734,7 +450,7 @@ initPu();
 				
 				<div class="nav-item dropdown d-none d-md-block {if $menu == 'tags'} active{/if}">
 					<a href="{$relative}/tags" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						{translate c='menu.tags'} <b class="caret"></b>
+						{translatec='menu.tags'} <b class="caret"></b>
 					</a>
 					{if $tags_sm}
 					<div class="dropdown-menu multi-column-dropdown">
@@ -751,7 +467,7 @@ initPu();
 											<span>	
 												<span class="tag-counter">{$tags_sm[i].counter}</span>							
 												<i class="fas fa-search"></i>						
-												<a href="{$relative}/search/tags/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
+												<a href="{$relative}/search/videos/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
 											</span>
 										</div>																					
 									{/section}									
@@ -766,23 +482,15 @@ initPu();
 					</div>
 					{/if}
 				</div>
+				<li class="nav-item "> <a class="nav-link" href="https://kntl.hair/Playcrot" target="_blank">Free Link Viral Lain-Nya</a> 
+				</li>
 				
-				<li class="nav-item {if $menu == 'community'} active{/if}">
-					<a class="nav-link" href="{$relative}/community">{translate c='menu.community'}</a>
-				</li>
-                <li class="nav-item"><a class="nav-link" href="https://porngameshub.com" target="_blank">Porn Games</a>
-
-					<!--<a class="nav-link" href="{$relative}/notices">Updates</a>-->
-				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item {if $menu == 'upload'}active{/if}">
-					<a class="nav-link" href="{$relative}/upload">{translate c='menu.upload'}</a>
-				</li>				
+							<a href="https://twitter.com/Fanscrot?" target="_blank">TWITTER</a>
 			</ul>
-			</div> 
+			</div>
 		</div>
 	</nav>
 </div>
 <div id="wrapper">
-
