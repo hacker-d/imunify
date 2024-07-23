@@ -120,7 +120,7 @@
 </head>
 <body>
 {literal}
-<script src='/templates/frontend/dark-green/js/body.js'></script>
+<script src="/templates/frontend/dark-green/js/body.js"></script>
 {/literal}
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
@@ -137,7 +137,8 @@
 						<button id="facebook-signin" class="btn btn-facebook" disabled><div></div><i class="fab fa-facebook-f"></i> <span>{t c='socialsignup.login_with'} Facebook</span></button>
 					</div>
 					{/if}
-					{if $g_signin == '1'}<div class="mb-4">
+					{if $g_signin == '1'}						
+					<div class="mb-4">
 						<button id="google-signin" class="btn btn-google" disabled><div></div><i class="fab fa-google-plus-g"></i> <span>{t c='socialsignup.login_with'} Google</span></button>
 					</div>
 					{/if}
@@ -438,7 +439,8 @@
 												</div>			
 											{/section}
 										</div>
-									{/if}</div>									
+									{/if}
+								</div>									
 							</div>
 						</div>
 					</div>
@@ -450,7 +452,7 @@
 				
 				<div class="nav-item dropdown d-none d-md-block {if $menu == 'tags'} active{/if}">
 					<a href="{$relative}/tags" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						{translatec='menu.tags'} <b class="caret"></b>
+						{translate c='menu.tags'} <b class="caret"></b>
 					</a>
 					{if $tags_sm}
 					<div class="dropdown-menu multi-column-dropdown">
