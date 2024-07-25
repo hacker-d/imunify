@@ -39,6 +39,9 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="{$baseurl}/images/favicons/apple-icon-76x76.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="{$baseurl}/images/favicons/apple-icon-114x114.png">
 	<link rel="apple-touch-icon" sizes="120x120" href="{$baseurl}/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="{$baseurl}/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="{$baseurl}/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="{$baseurl}/images/favicons/apple-icon-180x180.png">
 	<link rel="icon" type="image/png" sizes="192x192"  href="{$baseurl}/images/favicons/android-icon-192x192.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="{$baseurl}/images/favicons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="{$baseurl}/images/favicons/favicon-96x96.png">
@@ -81,13 +84,53 @@
 	var alert_messages = {$messages|json_encode};
 	var alert_errors = {$errors|json_encode};
 	</script>
-</head>
-<body>
-	<link rel="stylesheet" href="{$relative_tpl}/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.min.css">
 	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.themes.min.css">
-	<link href="{$relative_tpl}/css/main.css?=v4" rel="stylesheet">
-        <script src="/templates/frontend/fullthemev2/js/body.js"></script>
+
+	<link href="{$relative_tpl}/css/main.css?=ver2" rel="stylesheet">
+
+
+	<script src="https://kit.fontawesome.com/f8d4a35bda.js" crossorigin="anonymous"></script>
+
+	<!-- Video Player -->
+	{if $view && !$video.embed_code}
+		<link href="{$baseurl}/media/player/videojs/video-js.css" rel="stylesheet">
+		<link href="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.css" rel="stylesheet">
+		<link href="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.css" rel="stylesheet">
+		<link href="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.css" rel="stylesheet">
+		<link href="{$baseurl}/media/player/videojs/video-js-custom.css" rel="stylesheet">
+		{if $vast_vpaid && $player.vast_vpaid_adv}
+			<link href="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs.vast.vpaid.css" rel="stylesheet">
+		{/if}
+		<script src="{$baseurl}/media/player/videojs/ie8/videojs-ie8.min.js"></script>
+		<script src="{$baseurl}/media/player/videojs/video.js"></script>
+		{if $vast_vpaid && $player.vast_vpaid_adv}
+			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/es5-shim.js"></script>
+			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/ie8fix.js"></script>
+			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs_5.vast.vpaid.min.js"></script>
+		{/if}
+		<script src="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.js"></script>
+		<script src="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.js"></script>
+		<script src="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.js"></script>
+	{/if}
+	<!-- End Video Player -->
+	{if $menu == 'blogs'}
+		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
+	{/if}
+
+
+	<script src="{$relative_tpl}/js/script.js?=ver8"></script>
+</head>
+<body>
+<script src="/templates/frontend/dark-magenta/js/body.js"></script>
 <div class="modal fade" id="dialogModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -104,186 +147,173 @@
 		</div>
 	</div>
 </div>
+<header>
 
-<main>
-
-	<header>
-
-		<!-- Navigation bar -->
-
-		<nav class="header__nav nav-bar">
-		<div class="toggle-menu">
-			<div class="line line1"></div>
-			<div class="line line2"></div>
-			<div class="line line3"></div>
+	<div class="menu">
+		<div class="hamburger hamburger--spring">
+        	<span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
 		</div>
-		<ul class="nav-list">
-			<div class="mobile-search">
-			<div class="icon"><i class="icon-search"></i></div>
-			<div class="toggle">
-				<form name="search" id="search_form_mobile" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
-					<i class="close fas fa-times"></i>
-					<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query_mobile" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">
-					<a id="search_select_mobile" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="icon-search"></i>{/if}</a>
-					<input type="hidden" id="search_type_mobile" value="{$search_type}">
-				</form>
-			</div>
-		</div>
-			<li class="nav-list-item {if $menu == 'home'}active{/if}">
-				<a href="{$relative}/"class="nav-link">
-					{translate c='menu.home'}
-				</a>
-			</li>
-			<li class="nav-list-item {if $menu == 'videos'} active{/if} ">
-				<a href="{$relative}/videos"class="nav-link">
-{translate c='menu.videos'}
-				</a>
-			</li>
-			<li class="nav-list-item">
-<a href="{$relative}/upload" class="nav-link" rel="noopener" target="_blank">
-Upload
-</a>
-</li>
-			<li class="nav-list-item">
-{literal}<a rel="nofollow" href="https://www.gptgirlfriend.online/ai-girlfriend/?ref=owmymgy&tap_s=5116779-a0c3fd&tm_fup=link" 	{/literal} target="_blank"><img src="{$relative_tpl}/img/AIsexchat.svg" alt="AI Sex Chat"></a></a>
-</li>
-			<li class="nav-list-item {if $menu == 'tags'}active{/if}">
-				<a href="{$relative}/tags" class="nav-link">
-{translate c='menu.tags'}
-				</a>
-			</li>
-			<li class="nav-list-item {if $menu == 'community'} active{/if}">
-				<a href="{$relative}/users?o=mp" class="nav-link">
-{translate c='menu.community'}
-				</a>
-			</li>
-			<li class="nav-list-item {if $menu == 'community'} active{/if}">
-				<a href="https://discord.gg/DYkvXtV" class="nav-link">
-Discord
-				</a>
-			</li>
-			{if isset($smarty.session.uid)}
-			{else}
-					<ul class="nav-list-login">
-						<li><a href="{$relative}/login">{t c='global.login'}</a></li>
-						<li><a href="{$relative}/signup">{t c='global.sign_up'}</a></li>
-					</ul>
-			{/if}
+	</div>
+	<div class="left"><div class="logo"><a href="{$relative}/" title="Ahegao Porn" alt="Ahegao Porn Logo"></a></div></div>
+	<div class="search">
+		<form name="search" id="search_form" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
+			<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">
+			<a id="search_select" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="fas fa-video"></i>{/if}</a>
+			<input type="hidden" id="search_type" value="{$search_type}">
+		</form>
+	</div>
+	{if $suggestion_arr}
+	<div class="trending-searches">
+		<span class="head">{t c='menu.trending_searches'}</span>
+		<ul>
+			{section name=i loop=$suggestion_arr max=10}
+			<li><a href="{$relative}/search/videos/{$suggestion_arr[i].expression}">{$suggestion_arr[i].expression}</a></li>
+			{/section}
 		</ul>
-	</nav>
+	</div>
+	{/if}
+	<div class="upload"><a href="{$relative}/upload">{translate c='menu.upload'}</a></div>
 
-		<div class="search">
-			<form name="search" id="search_form" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
-				<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">
-				<a id="search_select" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="icon-search"></i>{/if}</a>
-				<input type="hidden" id="search_type" value="{$search_type}">
+	<div class="language">{insert name=language assign=flag}{$flag}<i class="fas fa-angle-down"></i></div>
+	<div class="language-dropdown" id="language-modal">
+		<ul>
+			{foreach from=$languages key=key item=language }
+			<li>
+				{if $smarty.session.language != $key}
+					<a href="#" id="{$key}" class="change-language" >{$language.name}</a>
+				{else}
+					<a href="#" class="change-language active">{$language.name}</a>
+				{/if}
+			</li>
+			{/foreach}
+		</ul>
+		<form name="languageSelect" id="languageSelect" method="post" action="">
+			<input name="language" id="language" type="hidden" value="" />
+		</form>
+	</div>
+
+
+	<div class="mobile-search">
+		<div class="icon"><i class="fas fa-search"></i></div>
+		<div class="toggle">
+			<form name="search" id="search_form_mobile" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
+				<i class="close fas fa-times"></i>
+				<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query_mobile" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">
+				<a id="search_select_mobile" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="fas fa-video"></i>{/if}</a>
+				<input type="hidden" id="search_type_mobile" value="{$search_type}">
 			</form>
 		</div>
+	</div>
+</header>
+
+<main>
+	<nav class="header">
 		{if isset($smarty.session.uid)}
-
-		<div class="wrapper">
-
-			<div class="userfunctions">
-		    <ul>
-					<li><a href="{$relative}/user"><i class="fas fa-user"></i></a></li>
-					<li><a href="{$relative}/mail/inbox">{if $mails_count > 0}<span class="count">{$mails_count}</span>{/if}<i class="fas fa-comments"></i></a></li>
-					<li><a href="{$relative}/user/edit"><i class="fas fa-cog"></i></a></li>
-					<li><a href="{$relative}/logout"><i class="fas fa-sign-out-alt"></i></a></li>
-		    </ul>
-		  </div>
-
-		  <div class="user-info">
-		    <div class="username-icon">
-		      <span class="username">{$smarty.session.username|truncate:80:"..."}</span>
-		    </div>
-		    <div class="subscribers">
-		      {insert name=user_subscriber assign=t_subscribers UID=$smarty.session.uid} {$t_subscribers}
-		    </div>
-		  </div>
-		  <div class="avatar">
-		    <img src="{$relative}/media/users/{if $smarty.session.photo == ''}nopic-{$smarty.session.gender}.gif{else}{$smarty.session.photo}?{0|rand:100}{/if}" alt="{$smarty.session.username|truncate:35:"..."}">
-		  </div>
-		</div>
+			<div class="user">
+				<div class="content">
+					<div class="flex">
+						<a href="{$relative}/user">
+							<div class="avatar">
+								<div class="content">
+									<img src="{$relative}/media/users/{if $smarty.session.photo == ''}nopic-{$smarty.session.gender}.gif{else}{$smarty.session.photo}?{0|rand:100}{/if}" alt="{$smarty.session.username|truncate:35:"..."}">
+								</div>
+							</div>
+							<div class="data">
+								<span class="username">{$smarty.session.username|truncate:35:"..."}</span>
+								<span class="subscribers">{insert name=tsubscribers assign=t_subscribers subscribers=$video.total_subscribers}{$t_subscribers}</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="functions">
+					<ul>
+						<li><a href="{$relative}/user/{$smarty.session.username}/videos"><i class="fas fa-film"></i></a></li>
+						<li><a href="{$relative}/user"><i class="fas fa-user"></i></a></li>
+						<li><a href="{$relative}/mail/inbox">{if $mails_count > 0}<span class="count">{$mails_count}</span>{/if}<i class="fas fa-comments"></i></a></li>
+						<li><a href="{$relative}/user/edit"><i class="fas fa-cog"></i></a></li>
+						<li><a href="{$relative}/logout"><i class="fas fa-sign-out-alt"></i></a></li>
+					</ul>
+				</div>
+			</div>
 		{else}
 			<div class="guest">
+				<span class="welcome-text"><b>Sign up</b> and enjoy<br> extra features!</span>
 				<ul>
 					<li><a href="{$relative}/login">{t c='global.login'}</a></li>
 					<li><a href="{$relative}/signup">{t c='global.sign_up'}</a></li>
 				</ul>
 			</div>
 		{/if}
+		<div class="mobile-upload-btn">
+			<a href="{$relative}/upload">{translate c='menu.upload'}</a>
+		</div>
 
-	</header>
-
-	<nav class="header">
-<div class="logo">
-<a href="{$relative}/" title="FreeusePorn" alt="FreeusePorn Logo"><img src="{$relative_tpl}/img/elements/logo.svg" height="52" width="62"></a></div>
 		<div class="menu">
 			<ul>
 				<li class="{if $menu == 'home'}active{/if}">
 					<a href="{$relative}/">
-						<i class="icon-home"></i>
+						<i class="fas fa-home"></i>
+						<span class="text">{translate c='menu.home'}</span>
 					</a>
 				</li>
 				<li class="{if $menu == 'videos'} active{/if}">
 					<a href="{$relative}/videos">
-						<i class="icon-video"></i>
+						<i class="fas fa-film"></i>
+						<span class="text">{translate c='menu.videos'}</span>
 					</a>
 				</li>
-				<li>
-{literal}<a rel="nofollow" href="https://www.gptgirlfriend.online/ai-girlfriend/?ref=owmymgy&tap_s=5116779-a0c3fd&tm_fup=link" 	{/literal} target="_blank"><img src="{$relative_tpl}/img/AIsexchat.svg" alt="AI Sex Chat"></a></a>
-</li>
+				<li class="{if $menu == 'albums'} active{/if}">
+					<a href="{$relative}/albums">
+						<i class="fas fa-image"></i>
+						<span class="text">{translate c='global.albums'}</span>
+					</a>
+				</li>
 				<li class="{if $menu == 'tags'}active{/if}">
 					<a href="{$relative}/tags">
-						<i class="icon-tag"></i>
+						<i class="fas fa-tag"></i>
+						<span class="text">{translate c='menu.tags'}</span>
 					</a>
 				</li>
-				<li class="{if $menu == 'upload'}active{/if}">
-					<a href="{$relative}/upload">
-						<i class="icon-upload"></i>
+				<li class="{if $menu == 'categories'}active{/if}">
+					<a href="{$relative}/categories">
+						<i class="fas fa-th-list"></i>
+						<span class="text">{translate c='menu.categories'}</span>
 					</a>
 				</li>
 				<li class="{if $menu == 'community'} active{/if}">
 					<a href="{$relative}/users?o=mp">
-						<i class="icon-user"></i>
-					</a>
-				</li>
-				<li>
-					<a href="https://discord.gg/DYkvXtV">
-						<i class="icon-discord"></i>
+						<i class="fas fa-users"></i>
+						<span class="text">{translate c='menu.community'}</span>
 					</a>
 				</li>
 			</ul>
 		</div>
+		{if $categories_sm}
+		<div class="categories">
+			<span class="head">{t c='menu.popular_categories'}</span>
+			<ul>
+				{section name=i loop=$categories_sm}
+				<li>
+					<a href="{$relative}/videos/{$categories_sm[i].slug}">
+						<span class="text">{$categories_sm[i].name|escape:'html'}</span>
+						<span class="count">{$categories_sm[i].total_videos}</span>
+					</a>
+				</li>
+				{/section}
+			</ul>
+		</div>
+		{/if}
 
 		<footer>
-			<div class="language">{insert name=language assign=flag}{$flag}<i class="fas fa-angle-down"></i></div>
-			<div class="language-dropdown" id="language-modal">
-				<ul>
-					{foreach from=$languages key=key item=language }
-					<li>
-						{if $smarty.session.language != $key}
-							<a href="#" id="{$key}" class="change-language" >{$language.name}</a>
-						{else}
-							<a href="#" class="change-language active">{$language.name}</a>
-						{/if}
-					</li>
-					{/foreach}
-				</ul>
-				<form name="languageSelect" id="languageSelect" method="post" action="">
-					<input name="language" id="language" type="hidden" value="" />
-				</form>
-			</div>
-			<ul class="header-info-icons">
-				<li><a href="/static/dmca"><i class="icon-dmca"></i></a></li>
-				<li><a href="/static/terms"><i class="icon-info"></i></a></li>
+			<ul>
+				<li><a href="/static/dmca">DMCA</a></li>
+				<li><a href="/static/terms">Terms and Conditions</a></li>
+				<li><a href="/static/privacy">Privacy Policy</a></li>
+				<li><a href="/static/faq">FAQ</a></li>
+				<li><a href="/feedback">Support / Feedback</a></li>
 			</ul>
+			<span class="copyright">Copyright ©2020 ahegaoporn.net<br>All Rights Reserved.</span>
 		</footer>
 	</nav>
-
-
-	<script src="{$relative_tpl}/js/jquery-3.1.0.min.js"></script>
-		<script src="{$relative_tpl}/js/popper.min.js"></script>
-	<script src="{$relative_tpl}/js/bootstrap.min.js"></script>
-	<script src="{$relative_tpl}/js/font-awesome.js"></script>
-		<script src="{$relative_tpl}/js/script.js?=ver7"></script>
