@@ -94,7 +94,7 @@
 	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.min.css">
 	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.themes.min.css">
 
-	<link href="{$relative_tpl}/css/main.css?=ver2" rel="stylesheet">
+	<link href="{$relative_tpl}/css/main.css?=ver3" rel="stylesheet">
 
 
 	<script src="https://kit.fontawesome.com/f8d4a35bda.js" crossorigin="anonymous"></script>
@@ -127,10 +127,10 @@
 	{/if}
 
 
-	<script src="{$relative_tpl}/js/script.js?=ver8"></script>
+	<script src="{$relative_tpl}/js/script.js?=ver7"></script>
 </head>
 <body>
-<script src="/templates/frontend/dark-magenta/js/body.js"></script>
+<script src="/templates/frontend/fulltheme/js/body.js"></script>
 <div class="modal fade" id="dialogModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -156,7 +156,7 @@
             </span>
 		</div>
 	</div>
-	<div class="left"><div class="logo"><a href="{$relative}/" title="Ahegao Porn" alt="Ahegao Porn Logo"></a></div></div>
+	<div class="left"><div class="logo"><a href="{$relative}/" title="Cosplay Porn" alt="Cosplay Porn Logo"></a></div></div>
 	<div class="search">
 		<form name="search" id="search_form" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
 			<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">
@@ -194,18 +194,17 @@
 		</form>
 	</div>
 
-
 	<div class="mobile-search">
-		<div class="icon"><i class="fas fa-search"></i></div>
-		<div class="toggle">
-			<form name="search" id="search_form_mobile" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
-				<i class="close fas fa-times"></i>
-				<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query_mobile" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">
-				<a id="search_select_mobile" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="fas fa-video"></i>{/if}</a>
-				<input type="hidden" id="search_type_mobile" value="{$search_type}">
-			</form>
-		</div>
+	<div class="icon"><i class="fas fa-search"></i></div>
+	<div class="toggle">
+		<form name="search" id="search_form_mobile" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
+			<i class="close fas fa-times"></i>
+			<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query_mobile" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">
+			<a id="search_select_mobile" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="fas fa-video"></i>{/if}</a>
+			<input type="hidden" id="search_type_mobile" value="{$search_type}">
+		</form>
 	</div>
+</div>
 </header>
 
 <main>
@@ -265,11 +264,11 @@
 					</a>
 				</li>
 				<li class="{if $menu == 'albums'} active{/if}">
-					<a href="{$relative}/albums">
-						<i class="fas fa-image"></i>
-						<span class="text">{translate c='global.albums'}</span>
-					</a>
-				</li>
+	<a href="{$relative}/albums">
+		<i class="fas fa-image"></i>
+		<span class="text">{translate c='global.albums'}</span>
+	</a>
+</li>
 				<li class="{if $menu == 'tags'}active{/if}">
 					<a href="{$relative}/tags">
 						<i class="fas fa-tag"></i>
@@ -290,6 +289,12 @@
 				</li>
 			</ul>
 		</div>
+
+				{insert name=adv assign=adv group='index_right'}
+			<div class="ad-content">
+				{$adv.ad}
+			</div>
+
 		{if $categories_sm}
 		<div class="categories">
 			<span class="head">{t c='menu.popular_categories'}</span>
@@ -314,6 +319,6 @@
 				<li><a href="/static/faq">FAQ</a></li>
 				<li><a href="/feedback">Support / Feedback</a></li>
 			</ul>
-			<span class="copyright">Copyright ©2020 ahegaoporn.net<br>All Rights Reserved.</span>
+			<span class="copyright">Copyright © 2020-2020 cosplayporn.org<br>All Rights Reserved.</span>
 		</footer>
 	</nav>
