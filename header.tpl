@@ -119,14 +119,11 @@
 	
 </head>
 <body>
-<script src="/templates/frontend/dark-mint/js/body.js"></script>
+<script src="/templates/frontend/dark-orange/js/body.js"></script>
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
-			<form name="login_form" method="post" action="{$relative}/login">	
-				<div class="modal-header">
-					<h4 class="modal-title">{t c='signup.login'}</h4>				
-					<button type="button" class="close" data-dismiss="modal">&times;</button>		
+			
 				</div>
 				<div class="modal-body">
 					<input name="current_url" type="hidden" value="{$current_url}"/>
@@ -260,8 +257,8 @@
 					</div>
 				{else}
 					<div class="top-menu-item">
-					<!-- BEGIN: Powered by Supercounters.com -->
-<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1648081,"ffffff","#064fb9");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
+						<!-- BEGIN: Powered by Supercounters.com -->
+<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1665532,"ffffff","000000");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
 </center>
 <!-- END: Powered by Supercounters.com -->
 
@@ -482,18 +479,16 @@
 					</div>
 					{/if}
 				</div>
-				</li>
-				<li class="nav-item "> <a class="nav-link" href="https://bokepadult.org" target="_blank">BOKEPADULT.ORG</a> 
-				</li>
-				<li class="nav-item "> <a class="nav-link" href="https://bokepsin.org" target="_blank">BOKEPSIN.ORG</a> 
-				</li>
-				<li class="nav-item "> <a class="nav-link" href="https://bokepsun.net" target="_blank">BOKEPSUN.NET</a> 
-				</li>
 				
-				
-			</ul>
-			<ul class="navbar-nav ml-auto">
-							<a href="https://twitter.com/Fanscrot?" target="_blank">TWITTER</a>
+				<li class="nav-item {if $menu == 'community'} active{/if}">
+					<a class="nav-link" href="{$relative}/community">{translate c='menu.community'}</a>
+				</li>
+				<li class="nav-item "> <a class="nav-link" href="https://bokepsin.org" target="_blank">BOKEPSIN</a> 
+				</li>
+				<li class="nav-item "> <a class="nav-link" href="https://Bokepsun.net" target="_blank">BOKEPSUN.NET</a> 
+				</li>
+				<li class="nav-item "> <a class="nav-link" href="https://dutabokep.com" target="_blank">DUTABOKEP.COM</a> 
+				</li>
 			</ul>
 			</div>
 		</div>
