@@ -126,13 +126,13 @@
 	
 </head>
 <body>
-<script src="/templates/frontend/dark-mint/js/body.js"></script>
+<script src="/templates/frontend/dark-orange/js/body.js"></script>
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
 			<form name="login_form" method="post" action="{$relative}/login">	
 				<div class="modal-header">
-					<h4 class="modal-title">{t c='signup.login'}</h4>				
+					<h3 class="modal-title">{t c='signup.login'}</h3>				
 					<button type="button" class="close" data-dismiss="modal">&times;</button>		
 				</div>
 				<div class="modal-body">
@@ -165,7 +165,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title"></h4>
+				<h3 class="modal-title"></h3>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">	
@@ -189,7 +189,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">{t c='global.select_language'}</h4>
+				<h3 class="modal-title">{t c='global.select_language'}</h3>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
