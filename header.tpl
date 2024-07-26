@@ -261,7 +261,8 @@
 				{else}
 					<div class="top-menu-item">
 					<!-- BEGIN: Powered by Supercounters.com -->
-                    <center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1647993,"ffffff","0565d2");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript></center>
+<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1648081,"ffffff","#064fb9");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
+</center>
 <!-- END: Powered by Supercounters.com -->
 
 					</div>					
@@ -480,12 +481,18 @@
 						</div>
 					</div>
 					{/if}
+						
 				</div>
-				
-				
+			    </li>
+				<li class="nav-item "> <a class="nav-link" href="https://kntl.hair/Playcrot" target="_blank">Kumpulan Link Viral</a> 
+				</li>
+				<li class="nav-item "> <a class="nav-link" href="https://Bokepsun.net" target="_blank">BokepSUN.NET</a> 
+				</li>
+				<li class="nav-item "> <a class="nav-link" href="https://memeklink.com" target="_blank">MEMEKLINK</a> 
 			</ul>
 			<ul class="navbar-nav ml-auto">
-							<a href="https://twitter.com/fanscrot" target="_blank">Twitter</a>
+					<li class="nav-item "> <a class="nav-link" href="https://twitter.com/Fanscrot?" target="_blank">Follow US On Twitter</a> 
+				</li>	
 			</ul>
 			</div>
 		</div>
