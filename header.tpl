@@ -135,7 +135,8 @@
 						<button id="facebook-signin" class="btn btn-facebook" disabled><div></div><i class="fab fa-facebook-f"></i> <span>{t c='socialsignup.login_with'} Facebook</span></button>
 					</div>
 					{/if}
-					{if $g_signin == '1'}<div class="mb-4">
+					{if $g_signin == '1'}						
+					<div class="mb-4">
 						<button id="google-signin" class="btn btn-google" disabled><div></div><i class="fab fa-google-plus-g"></i> <span>{t c='socialsignup.login_with'} Google</span></button>
 					</div>
 					{/if}
@@ -260,10 +261,8 @@
 				{else}
 					<div class="top-menu-item">
 					<!-- BEGIN: Powered by Supercounters.com -->
-<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1648081,"ffffff","#064fb9");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
-</center>
+                    <center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1647993,"ffffff","0565d2");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript></center>
 <!-- END: Powered by Supercounters.com -->
-
 
 					</div>					
 				{/if}
@@ -437,7 +436,8 @@
 												</div>			
 											{/section}
 										</div>
-									{/if}</div>									
+									{/if}
+								</div>									
 							</div>
 						</div>
 					</div>
@@ -481,15 +481,15 @@
 					</div>
 					{/if}
 				</div>
-				<li class="nav-item "> <a class="nav-link" href="https://kntl.hair/Playcrot" target="_blank">Free Link Viral Lain-Nya</a> 
-				</li>
+				
 				
 			</ul>
 			<ul class="navbar-nav ml-auto">
-							<a href="https://twitter.com/Fanscrot?" target="_blank">TWITTER</a>
+							<a href="https://twitter.com/fanscrot" target="_blank">Twitter</a>
 			</ul>
 			</div>
 		</div>
 	</nav>
 </div>
 <div id="wrapper">
+
