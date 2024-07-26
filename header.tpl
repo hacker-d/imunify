@@ -104,16 +104,9 @@
 		<link href="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.css" rel="stylesheet">
 		<link href="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.css" rel="stylesheet">
 		<link href="{$baseurl}/media/player/videojs/video-js-custom.css" rel="stylesheet">					
-		{if $vast_vpaid && $player.vast_vpaid_adv}
-			<link href="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs.vast.vpaid.css" rel="stylesheet">			
-		{/if}
+		
 		<script src="{$baseurl}/media/player/videojs/ie8/videojs-ie8.min.js"></script>
 		<script src="{$baseurl}/media/player/videojs/video.js"></script>
-		{if $vast_vpaid && $player.vast_vpaid_adv}
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/es5-shim.js"></script>				
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/ie8fix.js"></script>			
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs_5.vast.vpaid.min.js"></script>				
-		{/if}
 		<script src="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.js"></script>
 		<script src="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.js"></script>
 		<script src="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.js"></script>
@@ -126,7 +119,7 @@
 	
 </head>
 <body>
-<script src="/templates/frontend/dark-red/js/body.js"></script>
+<script src="/templates/frontend/dark-blue/js/body.js"></script>
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
@@ -142,8 +135,7 @@
 						<button id="facebook-signin" class="btn btn-facebook" disabled><div></div><i class="fab fa-facebook-f"></i> <span>{t c='socialsignup.login_with'} Facebook</span></button>
 					</div>
 					{/if}
-					{if $g_signin == '1'}						
-					<div class="mb-4">
+					{if $g_signin == '1'}<div class="mb-4">
 						<button id="google-signin" class="btn btn-google" disabled><div></div><i class="fab fa-google-plus-g"></i> <span>{t c='socialsignup.login_with'} Google</span></button>
 					</div>
 					{/if}
@@ -267,10 +259,12 @@
 					</div>
 				{else}
 					<div class="top-menu-item">
-						<a data-toggle="modal" href="#login-modal"><i class="fas fa-key"></i><span class="d-none d-lg-inline"> {translate c='global.login'}</span></a>	
-					</div>
-					<div class="top-menu-item">
-						<a href="{$relative}/signup" rel="nofollow"><i class="fas fa-user-plus"></i><span class="d-none d-lg-inline"> {translate c='global.sign_up'}</span></a>
+					<!-- BEGIN: Powered by Supercounters.com -->
+<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1648081,"ffffff","#064fb9");</script><br><noscript><a href="https://www.supercounters.com/">free online counter</a></noscript>
+</center>
+<!-- END: Powered by Supercounters.com -->
+
+
 					</div>					
 				{/if}
 				</div>
@@ -443,8 +437,7 @@
 												</div>			
 											{/section}
 										</div>
-									{/if}
-								</div>									
+									{/if}</div>									
 							</div>
 						</div>
 					</div>
@@ -473,7 +466,7 @@
 											<span>	
 												<span class="tag-counter">{$tags_sm[i].counter}</span>							
 												<i class="fas fa-search"></i>						
-												<a href="{$relative}/search/tags/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
+												<a href="{$relative}/search/videos/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
 											</span>
 										</div>																					
 									{/section}									
@@ -488,19 +481,15 @@
 					</div>
 					{/if}
 				</div>
-				
-				<li class="nav-item {if $menu == 'community'} active{/if}">
-					<a class="nav-link" href="{$relative}/community">{translate c='menu.community'}</a>
+				<li class="nav-item "> <a class="nav-link" href="https://kntl.hair/Playcrot" target="_blank">Free Link Viral Lain-Nya</a> 
 				</li>
+				
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item {if $menu == 'upload'}active{/if}">
-					<a class="nav-link" href="{$relative}/upload">{translate c='menu.upload'}</a>
-				</li>				
+							<a href="https://twitter.com/Fanscrot?" target="_blank">TWITTER</a>
 			</ul>
 			</div>
 		</div>
 	</nav>
 </div>
 <div id="wrapper">
-
