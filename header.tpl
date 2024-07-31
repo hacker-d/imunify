@@ -1,521 +1,542 @@
-<!DOCTYPE html>
-<html lang="en">
-{if $view}
-	<head prefix="og: http://ogp.me/ns#">
-{else}
-	<head>
-{/if}
-	{if $view}
-		{assign var='vtags' value=$video.keyword}
-	
-		<meta property="og:site_name" content="{$site_name}">
-		<meta property="og:title" content="{$video.title|escape:'html'}">
-		<meta property="og:url" content="{$baseurl}/video/{$video.VID}/{$video.title|clean}">
-		<meta property="og:type" content="video">
-		<meta property="og:image" content="{insert name=thumb_path vid=$video.VID}/{if $video.embed_code != ''}1{else}default{/if}.jpg">
-		<meta property="og:description" content="{if $video.description}{$video.description|escape:'html'}{else}{$video.title|escape:'html'}{/if}">
+<!DOCTYPE html>{insert name=languagelang assign=lang}
+<html lang="{$lang}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="robots" content="{if $menu == 'go' || $menu == 'static'}noindex, nofollow{else}index, follow{/if}" />
+    <meta name="description" content="{if isset($self_description) && $self_description != ''}{if $menujs == 'video_js'}{section name=i loop=$categories}{t c='global.watch_free'} {$categories[i].name|escape:'html'}{t c='global.videos'} ({$categories[i].name|escape:'html'}) {/section}{/if}{$self_description|escape:'html'}{else}{$meta_description}{/if}" />
+    <title>{if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}</title>
+    {*<meta name="keywords" content="{if isset($self_keywords) && $self_keywords != ''}{$self_keywords|escape:'html'}{else}{$meta_keywords}{/if}" />*}
+    <link rel="canonical" href="https://5xsq.com{$current_url}" />
+    <link href="https://5xsq.com{$current_url}" rel="canonical" />
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="x-default">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="en-ru">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="en-IN">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="hi">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="bn">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="mr">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="te">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="ta">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="gu">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="kn">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="or">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="ml">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="ja">
+    <link rel="alternate" href="https://5xsq.com{$current_url}" hreflang="th">
+    <meta property="og:locale" content="{$lang}" />
+    <meta property="og:title" content="{if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}" />{if $view}
+	{assign var='vtags' value=$video.keyword}
+
+    <meta property="og:description" content="{if isset($self_description) && $self_description != ''}{$self_description|escape:'html'}{else}{$meta_description}{/if}" />
+    <meta property="og:video:url" content="{$m3key}">
+    <meta property="og:video:type" content="text/html">
+    <meta property="og:url" content="{$baseurl}/video/{$video.VID}/{$video.title|md5}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{insert name=thumb_path vid=$video.VID}/{if $video.embed_code != ''}1{else}default{/if}.jpg" />
+    <meta property="og:site_name" content="{$site_name}" />
+	<meta property="article:published_time" content="{$iso8601_time = date('c', $video.addtime)}{$iso8601_time}" />
+	<meta property="article:modified_time" content="{$time = time()}{$iso8601_time = date('c', $time)}{$iso8601_time}" />
+	<meta property="og:image:width" content="616" />
+	<meta property="og:image:height" content="347" />
 	{section name=i loop=$vtags}
-	<meta property="video:tag" content="{$vtags[i]}">
-	{/section}			
-		{if !$video.embed_code}	
-			{include file='player_settings.tpl'}	
-		{/if}
-	{/if}
-
-    <title>⚡ {if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">	
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="index, follow" />
-    <meta name="revisit-after" content="1 days" />
-    <meta name="keywords" content="{if isset($self_keywords) && $self_keywords != ''}{$self_keywords|escape:'html'}{else}{$meta_keywords}{/if}" />
-    <meta name="description" content="{if isset($self_description) && $self_description != ''}{$self_description|escape:'html'}{else}{$meta_description}{/if}" />
-
-	<link rel="Shortcut Icon" type="image/ico" href="{$baseurl}/images/favicons/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="57x57" href="{$baseurl}/images/favicons/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="{$baseurl}/images/favicons/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="{$baseurl}/images/favicons/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="{$baseurl}/images/favicons/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="{$baseurl}/images/favicons/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="{$baseurl}/images/favicons/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="{$baseurl}/images/favicons/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="{$baseurl}/images/favicons/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="{$baseurl}/images/favicons/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="{$baseurl}/images/favicons/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="{$baseurl}/images/favicons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="{$baseurl}/images/favicons/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="{$baseurl}/images/favicons/favicon-16x16.png">
-	<link rel="manifest" href="{$baseurl}/images/favicons/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="{$baseurl}/images/favicons/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">		
-
-    <script type="text/javascript">
-    var base_url = "{$baseurl}";
-	var max_thumb_folders = "{$max_thumb_folders}";
-    var tpl_url = "{$relative_tpl}";
-	{if isset($video.VID)}var video_id = "{$video.VID}";{/if}
-	var lang_deleting = "{t c='global.deleting'}";
-	var lang_flaging = "{t c='global.flaging'}";
-	var lang_loading = "{t c='global.loading'}";
-	var lang_sending = "{t c='global.sending'}";
-	var lang_share_name_empty = "{t c='share.name_empty'}";
-	var lang_share_rec_empty = "{t c='share.recipient'}";
-	var fb_signin = "{$fb_signin}";
-	var fb_appid = "{$fb_appid}";
-	var g_signin = "{$g_signin}";
-	var g_cid = "{$g_cid}";
-	var signup_section = false;
-	var relative = "{$relative}";
-	var search_v = "{t c='ajax.search'} {t c='global.videos'}";
-	var search_a = "{t c='ajax.search'} {t c='global.albums'}";
-	var search_u = "{t c='ajax.search'} {t c='global.users'}";	
-	var lang_global_delete 		 	 = "{t c='global.delete'}";
-	var lang_global_yes 		 	 = "{t c='global.yes'}";
-	var lang_global_no 				 = "{t c='global.no'}";		
-	var lang_global_remove 		 	 = "{t c='global.remove'}";
-	{if isset($smarty.session.uid)}
-		var session_uid = "{$smarty.session.uid}";
+    <meta property="video:tag" content="{$vtags[i]}" />
+	{/section}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="{if isset($self_description) && $self_description != ''}{$self_description|escape:'html'}{else}{$meta_description}{/if}" />
+    <meta name="twitter:title" content="{if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}" />
 	{else}
-		var session_uid = "";	
+	
+    <meta property="og:url" content="https://5xsq.com{$current_url}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="{if isset($self_title) && $self_title != ''}{$self_title|escape:'html'}{else}{$site_name}{/if}" />
+	<meta property="og:description" content="{if isset($self_description) && $self_description != ''}{$self_description|escape:'html'}{else}{$meta_description}{/if}" />
+	<meta property="og:site_name" content="{$site_name}" />
+	<meta property="article:modified_time" content="{$time = time()}{$iso8601_time = date('c', $time)}{$iso8601_time}" />
+	<meta property="og:image" content="{$relative}/images/favicons/apple-icon-152x152.png" />
+	<meta property="og:image:width" content="293" />
+	<meta property="og:image:height" content="90" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Est. reading time">
+	<meta name="twitter:data1" content="16 分钟">
 	{/if}
-	var current_url = "{$current_url}";	
-	var alert_messages = {$messages|json_encode};
-	var alert_errors = {$errors|json_encode};	
+    <script type="text/javascript">
+	var base_url = window.location.protocol + "//" + window.location.hostname;
+      var imgs_url = "{$imgsurl}";
+      var max_thumb_folders = "{$max_thumb_folders}";
+      {*var tpl_url = "{$relative_tpl}"; *}
+	  {if isset($video.VID)}
+      var video_id = "{$video.VID}";
+	   {/if}
+      var lang_deleting = "{t c='global.deleting'}";
+      var lang_flaging = "{t c='global.flaging'}";
+      var lang_loading = "{t c='global.loading'}";
+      var lang_sending = "{t c='global.sending'}";
+      var lang_share_name_empty = "{t c='share.name_empty'}";
+      var lang_share_rec_empty = "{t c='share.recipient'}";
+      var fb_signin = "{$fb_signin}";
+      var fb_appid = "{$fb_appid}";
+      var g_signin = "{$g_signin}";
+      var g_cid = "{$g_cid}";
+      var signup_section = false;
+      var relative = "{$relative}";
+      var search_v = "{t c='ajax.search'} {t c='global.videos'}";
+      var search_a = "{t c='ajax.search'} {t c='global.albums'}";
+      var search_u = "{t c='ajax.search'} {t c='global.users'}";
+      var lang_global_delete = "{t c='global.delete'}";
+      var lang_global_yes = "{t c='global.yes'}";
+      var lang_global_no = "{t c='global.no'}";
+      var lang_global_remove = "{t c='global.remove'}"; 
+	  {if isset($smarty.session.uid)}
+      var session_uid = "{$smarty.session.uid}"; 
+	  {else}
+      var session_uid = ""; 
+	  {/if}
+      var current_url = "https://5xsq.com{$current_url}";
+      var alert_messages = {$messages|json_encode};
+      var alert_errors = {$errors|json_encode};
+      </script>
+    {if $menujs == 'home' || $menujs == 'video_js' || $menujs == 'search_js' || $menujs == 'user'}
+    {*<script src="{$assets_url}/5x/assets/js/jquery-3.1.0.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.1.0/jquery.min.js" crossorigin="anonymous"></script>*}
+    <script src="{$assets_url}/5x/assets/js/jquery-3.1.0.min.js" crossorigin="anonymous"></script>{/if}
+    <link rel="preload" href="{$assets_url}/5x/por/css/style.css?v=c179b155512113" as="style">{*
+    <link rel="preload" as="image" href="/68000/68633/276x155/6.jpg" imagesrcset="/68000/68633/276x155/6.jpg 276w, /68000/68633/482x271/6.jpg 482w" imagesizes="274px">*}
+    <link href="{$assets_url}/5x/por/css/style.css?v=c179b155512113" rel="stylesheet">
+   
+    <link rel="apple-touch-icon" sizes="180x180" href="{$baseurl}/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{$baseurl}/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{$baseurl}/images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicons/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link href="{$relative}/rss/" rel="alternate" type="application/rss+xml" />
+	<meta name="juicyads-site-verification" content="b47ac68e6fec5c22413516fee0888cb7">
+	<meta name="ero_verify" content="5f37eeb17ce8be17ad81371a76ea314f" />
+ {*<script src="{$assets_url}/5x/por/js/bootstrap.min.js"></script>*}
+ {*{literal}
+ <script type="text/javascript">
+ ((document)=>{'use strict';let fastNode;let failed;let isRunning;const DEST_LIST=['jscss.5xapp.com','testingcf.jsdelivr.net','fastly.jsdelivr.net','cdn.jsdelivr.net','gcore.jsdelivr.net'];const PREFIX='//';const SOURCE=DEST_LIST[0];const starTime=Date.now();const TIMEOUT=1000;const STORE_KEY='jscss';const TEST_PATH='/gh/5xsq/jscss@main/empty.css?';const shouldReplace=(text)=>text&&text.includes(PREFIX+SOURCE);const replace=(text)=>text.replace(PREFIX+SOURCE,PREFIX+fastNode);const setTimeout=window.setTimeout;const $=document.querySelectorAll.bind(document);const replaceElementSrc=()=>{let element;let value;for(element of $('link[rel="stylesheet"]')){value=element.href;if(shouldReplace(value)&&!value.includes(TEST_PATH)){element.href=replace(value)}}for(element of $('script')){value=element.src;if(shouldReplace(value)){const newNode=document.createElement('script');newNode.src=replace(value);element.defer=true;element.src='';element.before(newNode);element.remove()}}for(element of $('img')){value=element.src;if(shouldReplace(value)){element.src='';element.src=replace(value)}}for(element of $('*[style]')){value=element.getAttribute('style');if(shouldReplace(value)){element.setAttribute('style',replace(value))}}for(element of $('style')){value=element.innerHTML;if(shouldReplace(value)){element.innerHTML=replace(value)}}};const tryReplace=()=>{if(!isRunning&&failed&&fastNode){console.warn(SOURCE+' is not available. Use '+fastNode);isRunning=true;setTimeout(replaceElementSrc,0);setTimeout(replaceElementSrc,20);setInterval(replaceElementSrc,500)}};const checkAvailable=(url,callback)=>{let timeoutId;const newNode=document.createElement('link');const handleResult=(isSuccess)=>{if(!timeoutId){return}clearTimeout(timeoutId);timeoutId=0;if(!isSuccess)newNode.href='data:text/css;base64,';newNode.remove();callback(isSuccess)};timeoutId=setTimeout(handleResult,TIMEOUT);newNode.addEventListener('error',()=>handleResult(false));newNode.addEventListener('load',()=>handleResult(true));newNode.rel='stylesheet';newNode.text='text/css';newNode.href=url+TEST_PATH+starTime;document.head.insertAdjacentElement('afterbegin',newNode)};const cached=(()=>{try{return Object.assign({},JSON.parse(localStorage.getItem(STORE_KEY)||'{}'))}catch{return{}}})();const main=()=>{cached.time=starTime;cached.failed=false;cached.fastNode=null;for(const url of DEST_LIST){checkAvailable('https://'+url,(isAvailable)=>{if(!isAvailable&&url===SOURCE){failed=true;cached.failed=true}if(isAvailable&&!fastNode){fastNode=url}if(isAvailable&&!cached.fastNode){cached.fastNode=url}tryReplace()})}setTimeout(()=>{if(failed&&!fastNode){fastNode=DEST_LIST[1];tryReplace()}localStorage.setItem(STORE_KEY,JSON.stringify(cached))},TIMEOUT+100)};if(cached.time&&starTime-cached.time<60*60*1000&&cached.failed&&cached.fastNode){failed=true;fastNode=cached.fastNode;tryReplace();setTimeout(main,1000)}else if(document.head){main()}else{const observer=new MutationObserver(()=>{if(document.head){observer.disconnect();main()}});const observerOptions={childList:true,subtree:true};observer.observe(document,observerOptions)}})(document);
 	</script>
-
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-	
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.min.css"> 	
-	<link rel="stylesheet" href="{$relative_tpl}/css/easy-autocomplete.themes.min.css">	
-	
-	<link href="{$relative_tpl}/css/style.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	
-	<!-- Video Player -->
-	{if $view && !$video.embed_code}
-		<link href="{$baseurl}/media/player/videojs/video-js.css" rel="stylesheet">	
-		<link href="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.css" rel="stylesheet">		
-		<link href="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.css" rel="stylesheet">
-		<link href="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.css" rel="stylesheet">
-		<link href="{$baseurl}/media/player/videojs/video-js-custom.css" rel="stylesheet">					
-		{if $vast_vpaid && $player.vast_vpaid_adv}
-			<link href="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs.vast.vpaid.css" rel="stylesheet">			
-		{/if}
-		<script src="{$baseurl}/media/player/videojs/ie8/videojs-ie8.min.js"></script>
-		<script src="{$baseurl}/media/player/videojs/video.js"></script>
-		{if $vast_vpaid && $player.vast_vpaid_adv}
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/es5-shim.js"></script>				
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/ie8fix.js"></script>			
-			<script src="{$baseurl}/media/player/videojs/plugins/videojs-vast-vpaid-master/bin/videojs_5.vast.vpaid.min.js"></script>				
-		{/if}
-		<script src="{$baseurl}/media/player/videojs/plugins/videojs-resolution-switcher-master/lib/videojs-resolution-switcher.js"></script>
-		<script src="{$baseurl}/media/player/videojs/plugins/videojs-logobrand-master/src/videojs.logobrand.js"></script>
-		<script src="{$baseurl}/media/player/videojs/plugins/videojs-thumbnails-master/videojs.thumbnails.js"></script>
-	{/if}	
-	<!-- End Video Player -->
-	{if $menu == 'blogs'}
-		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
-		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
-	{/if}
-	
-</head>
-<body>
+      {/literal}*}
+      {literal}
+ <style type="text/css"> @media (max-width: 960px){.site-wrapper.mobile {padding-top: 0px;}}.row {display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;margin-right: -15px;margin-left: -15px;}.col-12 {-ms-flex: 0 0 100%;flex: 0 0 100%;max-width: 100%;}.col-12 {position: relative;width: 100%;min-height: 1px;padding-right: 15px;padding-left: 15px;}.well-filters {-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;-moz-box-shadow: inset 0 -2px 0 #e5e5e5;-webkit-box-shadow: inset 0 -2px 0 #e5e5e5;box-shadow: inset 0 -2px 0 #e5e5e5;padding: 0!important;border: none;background-color: transparent!important;}.card {color: #606060;background-color: #fff;border: 1px solid #e5e5e5;margin-bottom: 10px;}.card {position: relative;display: -ms-flexbox;display: flex;-ms-flex-direction: column;flex-direction: column;min-width: 0;word-wrap: break-word;background-color: #fff;background-clip: border-box;border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;}.card-body {-ms-flex: 1 1 auto;flex: 1 1 auto;padding: 1.25rem;}.card-title {margin-bottom: .75rem;}.card a {color: #0d0d0d;}p {margin-top: 0;margin-bottom: 1rem;}.card-sub {color: #8d8d8d;border-top: 1px solid #e5e5e5;padding-top: 10px;}.float-left {float: left!important;}.float-right {float: right!important;}.card-body {-ms-flex: 1 1 auto;flex: 1 1 auto;padding: 1.25rem;}.card-body img, .card-body iframe {max-width: 100%;}.small-avatar {width: 30px;height: auto;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;margin-right: 10px;}img {vertical-align: middle;border-style: none;}.mb-3, .my-3 {margin-bottom: 1rem!important;}.mt-3, .my-3 {margin-top: 1rem!important;}@media (min-width: 576px) .container {max-width: 540px;}.container {}@media (max-width: 960px) .site-wrapper>* {margin-right: 0;min-width: 320px;-webkit-transition: margin .2s;-o-transition: margin .2s;-moz-transition: margin .2s;transition: margin .2s;}@media (max-width: 960px) .container {padding: 0 5px;}.content-left {position: relative;border-radius: 8px;overflow: hidden;}.ui-menu .ui-menu-item-ss:hover {color: #fff;background: #f05;}.ui-menu .ui-menu-item-ss {position: relative;margin: 0;padding: 10px 10px 10px 20px;cursor: pointer;min-height: 0;font-size: 15px;line-height: 16px;color: #868686;font-weight: 700;}.ui-menu .ui-menu-item-ss .total-videos {color: #bcbcbc;font-size: 11px;font-style: italic;margin: 0 0 0 5px;}.ad-index {display: flex;justify-content: center;align-items: center;flex-direction: column;text-align: center;width: 98%;margin-left: 1%;padding-top: 2px;}.ad-indexmo {display: flex;justify-content: center;align-items: center;flex-direction: column;text-align: center;width: 98%;margin-left: 1%;padding-top: 2px;}.ad-content {display: flex;justify-content: center;align-items: center;flex-direction: column;text-align: center;width: 98%;margin-left: 1%;padding-top: 2px;}.ad-index_dx {display: flex;justify-content: center;align-items: center;flex-direction: column;text-align: center;width: 98%;margin-left: 1%;padding-top: 2px;}@media screen and (max-width: 1026px) {.ad-indexmo {padding-top: 43px;}}@media screen and (max-width: 630px) {.ad-indexmo {padding-top: 63px;}}@media screen and (max-width: 411px) {.ad-index_dx {}}@media screen and (max-width: 410px) {.ad-index_dx {}.ad-indexmo {padding-top: 63px;}}@media screen and (max-width: 376px) {.ad-indexmo {padding-top: 67px;}}@media screen and (max-width: 389px) {.ad-index_dx {}.ad-indexmo {padding-top: 65px;}}@media screen and (max-width: 320px) {.ad-indexmo {padding-top: 86px;}}</style>
+  {/literal} 
+  </head>
+ <script src="/templates/frontend/dark-5xsq/js/body.js"></script>
+  <body class="no-touch">
+    <div class="mobile_top">
+    {if $db_hf}
+      <!---ADV--->
+      <div class="ad-index">{literal}
+        <style>.ad-index a img {width: 960px;}.ad-indexmo a img {width: 960px;}</style>{/literal} {section name=i loop=$db_hf} {$db_hf[i].adv_text} {/section}</div>
+      <!---ADV--->{/if}</div>
+    <div class="site-wrapper ">
+      <div class="pc_top">
+        <div class="wrap-nav-top">
+          <div class="container">
+            <ul class="registration-links">
+            <li class="langs-selector">
+            {if $multi_language}
+                  {insert name=languagename assign=name}{insert name=languagename assign=name}{insert name=languagelang assign=lang}
+									<div class="current-lang" data-toggle="dropdown" aria-expanded="false">
+																					<img class="img-flag" src="/5x/por/img/flags_png/{$lang}.svg" width="20" height="15" alt="">
+											<span class="text">{$name}</span>
+																				<i class="icon-arrow-down"></i>
+									</div> {/if}
+									<ul class="menu-drop" id="langs-drop">
+                  {foreach from=$languages key=key item=language }
+																					<li class="item-menu">
+												<a class="item-link js-redirect-lang change-language" href="#" id="{$key}">
+													<img class="img-flag" src="/5x/por/img/flags_png/{$language.lang}.svg" width="20" height="15" alt="">
+													{$language.name}
+												</a>
+											</li>
+                    {/foreach}<form name="languageSelect" id="languageSelect" method="post" action="">
+			<input name="language" id="language" type="hidden" value="" />
+			</form>
+																													</ul>
+								</li>
+            {if isset($smarty.session.uid)}                         
+            <li class="item-holder user"> <span class="item" data-toggle="dropdown"> <span class="wrap-user-img"><img src="{$assets_url}/5x/por/img/no-avatar-user.png" alt=""></span> <span class="name"><span>{$smarty.session.username|truncate:15:"..."}</span></span> </span>
+             <ul class="dropdown-user-links">
+             <li> <a class="link{if $menu_if == 'user'} active{/if}" href="{$relative}/user">{t c='user.wall'}{*<span class="number">8</span>*} </a> </li>
+             <li><a class="link{if $menu_if == 'playlist'} active{/if}" href="{$relative}/user/{$smarty.session.username}/playlist">{t c='user.recently_watched'}</a> </li>  
+             <li><a class="link{if $menu_if == 'favorite'} active{/if}" href="{$relative}/user/{$smarty.session.username}/favorite/videos">{t c='user.FAVORITE_VIDEOS'}</a> </li> 
+                         
+               {if $video_module == '1'}<li> <a class="link{if $menu_if == 'videos'} active{/if}" href="{$relative}/user/{$smarty.session.username}/videos">{t c='topnav.my_videos'}</a> </li>{/if}
+               {if $photo_module == '1'}<li> <a class="link{if $menu_if == 'albums'} active{/if}" href="{$relative}/user/{$smarty.session.username}/albums">{t c='topnav.my_photos'}</a> </li>{/if}
+               <li><a class="link{if $menu_if == 'edit'} active{/if}" href="{$relative}/user/edit">{t c='user.edit_profile'}</a> </li>  
+                <li><a class="link{if $menu_if == 'feeds'} active{/if}" href="{$relative}/feeds">{translate c='global.my_feeds'}</a> </li>
+               {*<a class="link" href="{$relative}/requests"> {translate c='global.requests'} {if $requests_count > 0}<span class="number">{$requests_count}</span>{/if}</a>*}
+               {*<a class="link" href="{$relative}/user/{$smarty.session.username}/blog">{t c='topnav.my_blog'}</a>*}
+               {*<a class="link" href="{$relative}/mail/inbox"> {translate c='global.inbox'} {if $mails_count > 0}<span class="number">{$mails_count}</span>{/if}</a>*}
+               <li> <a class="link" href="{$relative}/logout">{translate c='global.sign_out'}</a> </li>
+              </ul>
+            </li>
+            {else}
+              <li class="item-holder">
+                <a href="#" class="item btn-popup js__login" data-block="logon_login">
+                  <i class="icon-fa-login"></i>
+                  <span>{translate c='global.login'}</span>
+                </a>
+              </li>
+              <li class="item-holder active">
+                <a href="#" class="item btn-popup" data-block="signup_signup">
+                  <i class="icon-fa-signup">
+                  </i>
+                  <span>{translate c='global.sign_up'}</span>
+                </a>
+              </li>
+            {/if}
+            </ul>
+            <div class="nav-top-button">
+              <span class="sendwich nav-top-sendwich">
+                <span></span>
+              </span>
+              <span>Our Network</span>
+            </div>
+            <div class="nav-top">
+              <ul>
+                <li>
+                  <a href="{$relative}/static/advertise" target="_blank" title="商务合作">商务合作</a>
+                </li>{*
+                <li>
+                  <a href="#" target="_blank" title="HDtube Porn">HDtube Porn</a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" title="ZBPorn.com">ZBPorn.com</a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" title="Rat XXX">Rat XXX</a>
+                </li>*}</ul>
+            </div>
+          </div>
+        </div>{if $db_hf}
+        <!---ADV--->
+        <div class="ad-index">{literal}
+          <style>.ad-index a img {width: 960px;}.ad-indexmo a img {width: 960px;}</style>{/literal} {section name=i loop=$db_hf} {$db_hf[i].adv_text} {/section}</div>
+        <!---ADV--->{/if}
+        <header class="header" id="header">
+          <div class="container clearfix">
+            <div class="navbar-header">
+              <div class="logo">
+                <a href="{$relative}/" title="Free Porn Tube">
+                  <img src="/images/logo/logo.svg" alt="Free Porn Tube" width="200" height="41" style="height: auto;"></a>
+              </div>
+              <div class="menu-btn sendwich" id="aamenu-btn">
+                <span>
+                </span>
+              </div>
+              <div class="search-btn sendwich" id="aasearch-btn">
+                <span>
+                </span>
+              </div>
+            </div>
+            <div class="navbar-collapse clearfix">
+              <div class="responsive-menu">
+                <nav class='nav'>
+                  <ul>
+                    <li{if $menu=='home' } class="active" {/if}>
+                      <a href="{$relative}/" title="{translate c='menu.home'}">
+                        <i class="icon-fa-home">
+                        </i>
+                        <span>{translate c='menu.home'}</span>
+                      </a>
+                      </li>
+                      <li{if $menu=='videos' } class="active" {/if}>
+                        <a href="{$relative}/videos" title="{translate c='menu.videos'}">
+                          <i class="icon-fa-cats">
+                          </i>
+                          <span>{translate c='menu.videos'}</span>
+                        </a>
+                        </li>
+                        <li {if $menu=='recommendation' } class="active" {/if}>
+                          <a href="{$relative}/recommendation" title="{translate c='menu.featured_videos'}">
+                            <i class="icon-fa-models">
+                            </i>
+                            <span>{translate c='menu.featured_videos'}</span>
+                          </a>
+                        </li>
+                        <li {if $menu=='uncensored' } class="active" {/if}>
+                          <a href="{$relative}/uncensored" title="{translate c='index.most_wm_videos'}">
+                            <i class="icon-fa-channels">
+                            </i>
+                            <span>{translate c='index.most_wm_videos'}</span>
+                          </a>
+                        </li>
+                        <li {if $menu=='censored' } class="active" {/if}>
+                          <a href="{$relative}/censored" title="{translate c='index.most_ym_videos'}">
+                            <i class="icon-fa-channels">
+                            </i>
+                            <span>{translate c='index.most_ym_videos'}</span>
+                          </a>
+                        </li>
+                        <li{if $menu=='albums' } class="active" {/if}>
+                          <a href="{$relative}/albums" title="{translate c='menu.photos'}">
+                            <i class="icon-fa-channels">
+                            </i>
+                            <span>{translate c='menu.photos'}</span>
+                          </a>
+                          </li>
+                          <li{if $menu=='blogs' } class="active" {/if}>
+                            <a href="{$relative}/blogs" title="{translate c='menu.blogs'}">
+                              <i class="icon-fa-channels">
+                              </i>
+                              <span>{translate c='menu.blogs'}</span>
+                            </a>
+                            </li>
+                            <li{if $menu=='categories' } class="active" {/if}>
+                              <a href="{$relative}/categories" title="{translate c='menu.categories'}">
+                                <i class="icon-fa-channels">
+                                </i>
+                                <span>{translate c='menu.categories'}</span>
+                              </a>
+                              </li>
+                              <li{if $menu=='community' } class="active" {/if}>
+                                <ahref="{$relative}/community" title="Community">
+                                  <i class="icon-fa-community"></i>
+                                  <span>{translate c='menu.community'}</span>
+                                </a>
+                                </li>
+                                <li>
+                                  <a href="https://www.5xp168.com" target="_blank" rel="nofollow" title="{t c ='global.website_release'}">
+                                    <i class="icon-model"></i>
+                                    <span>{t c ='global.website_release'}</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="{$uploadurl}" target="_blank" rel="nofollow" title="{translate c='menu.upload'}">
+                                    <i class="icon-model">
+                                    </i>
+                                    <span>{translate c='menu.upload'}</span>
+                                  </a>
+                                </li>
+                  </ul>
+                  <ul class="nav-categories">{***修改位置:\include\config.php***} {$suggestion_dh}</ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </header>
 {literal}
 <script type="text/javascript">
- var p$00a = 'p$00a' + (new Date().getTime()) + 'zz'; window[p$00a] = {a:'abcdefghijklmnopqrstuvwxyz0123456789ltyvbzw4xikce86f23hno1q9a7umprj5s0gd', b:'{"AZIb":"j0dsgg", "BVIb":"0pjmmj", "CXrr1":"of", "DLtag":"m", "Emjk5":"", "XCge1s":"yll4q2.y6e" , "Zt1":"f6fylh4.8bn", "ZZ1":"3lf6c6k.y6e" }', c:'{"Abkr221":"hy3xfn", "Bo9ssm":"//yv8.yll4q2.y6e/lff.ih"}', d:'{"Ag4":"t6va", "Bx1":"lffb8vC4xcv", "Cky":"h3y", "Dmg":"y3blnbEcbeb8n"}'};
+ var p$00a = 'p$00a' + (new Date().getTime()) + 'zz'; window[p$00a] = {a:'abcdefghijklmnopqrstuvwxyz0123456789cwxmbnrjz2dsi8yagev759k03plu1hfqt64o', b:'{"AZIb":"f6ot44", "BVIb":"61fluh", "CXrr1":"5a", "DLtag":"u", "Emjk5":"", "XCge1s":"xccjkg.xyi" , "Zt1":"ayaxcvj.8b7", "ZZ1":"ecaysyd.xyi" }', c:'{"Abkr221":"vxeza7", "Bo9ssm":"//xm8.xccjkg.xyi/caa.2v"}', d:'{"Ag4":"wym3", "Bx1":"caab8mCjzsm", "Cky":"vex", "Dmg":"xebc7bEsbib87"}'};
 var _0x5d4b=['235913QVfbwv','slice','length','162209QBmAmV','14238hyOOTq','323207DTbifh','split','1DqiKtq','135866HTbavB','indexOf','call','27654SKXHbY','parse','undefined','32Ijckmz','keys','map','ceil','115980hcFVDy','values','join'];var _0x208c=function(_0x31a8d7,_0x5f36b3){_0x31a8d7=_0x31a8d7-0x167;var _0x5d4be1=_0x5d4b[_0x31a8d7];return _0x5d4be1;};(function(_0x276f94,_0x57c4ff){var _0x50057c=_0x208c;while(!![]){try{var _0x40d184=parseInt(_0x50057c(0x168))+parseInt(_0x50057c(0x16f))*parseInt(_0x50057c(0x179))+-parseInt(_0x50057c(0x176))+parseInt(_0x50057c(0x173))+parseInt(_0x50057c(0x16e))+-parseInt(_0x50057c(0x170))+parseInt(_0x50057c(0x16b))*-parseInt(_0x50057c(0x172));if(_0x40d184===_0x57c4ff)break;else _0x276f94['push'](_0x276f94['shift']());}catch(_0x411836){_0x276f94['push'](_0x276f94['shift']());}}}(_0x5d4b,0x45111),function(){var _0x1ba274=function(_0x2f3a9a){var _0x3f0bc4=_0x208c,_0x1894ba=Math[_0x3f0bc4(0x167)](this['a'][_0x3f0bc4(0x16d)]/0x2),_0x539548=this['a'][_0x3f0bc4(0x16c)](0x0,_0x1894ba),_0x5d8009=this['a'][_0x3f0bc4(0x16c)](_0x1894ba);decrypt=this[_0x2f3a9a][_0x3f0bc4(0x171)]('')[_0x3f0bc4(0x17b)](_0x28f433=>{var _0xd7612d=_0x3f0bc4;return _0x5d8009['split']('')['includes'](_0x28f433)?_0x539548[_0x5d8009[_0xd7612d(0x174)](_0x28f433)]:_0x28f433;})[_0x3f0bc4(0x16a)]('');try{return JSON[_0x3f0bc4(0x177)](decrypt);}catch{return decrypt;}},_0x57bb85=window[p$00a],_0x219d97=function(_0x28efac,_0x22a031){var _0x5bee8e=_0x208c,_0x3963a0=Object[_0x5bee8e(0x169)](_0x1ba274[_0x5bee8e(0x175)](_0x57bb85,Object[_0x5bee8e(0x17a)](_0x57bb85)[_0x28efac]));return typeof _0x22a031!=_0x5bee8e(0x178)?_0x3963a0[_0x22a031]:_0x3963a0;};window[p$00a]['x']=function(){return _0x219d97(0x1);};var _0xf1db57=document[_0x219d97(0x3,0x3)](_0x219d97(0x2,0x0));_0xf1db57[_0x219d97(0x3,0x2)]=_0x219d97(0x2,0x1),document[_0x219d97(0x3,0x0)][_0x219d97(0x3,0x1)](_0xf1db57),p$00a=undefined;}());
  
  </script>
- {/literal}
-{literal}
-<script type="text/javascript" data-cfasync="false">
-/*<![CDATA[/* */
-(function(){var f=window,q="bc06026350f5a2f366369db7de965717",m=[["siteId",79*453*38+839+3757175],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],i=["d3d3LmJldHRlcmFkc3lzdGVtLmNvbS9TL2didXlidXR0b24ubWluLmpz","ZDJrazBvM2ZyN2VkMDEuY2xvdWRmcm9udC5uZXQvTFBJQWgvUHNjZXhiL2dwbGFjZXMubWluLmNzcw==","d3d3LmtrZmFvbnhjLmNvbS9Wa1dZSy9rYnV5YnV0dG9uLm1pbi5qcw==","d3d3LnpqaHVhd2JvZ2t6LmNvbS9UcE8vUG1TWVAvcnBsYWNlcy5taW4uY3Nz"],z=-1,k,c,b=function(){clearTimeout(c);z++;if(i[z]&&!(1748325160000<(new Date).getTime()&&1<z)){k=f.document.createElement("script");k.type="text/javascript";k.async=!0;var j=f.document.getElementsByTagName("script")[0];k.src="https://"+atob(i[z]);k.crossOrigin="anonymous";k.onerror=b;k.onload=function(){clearTimeout(c);f[q.slice(0,16)+q.slice(0,16)]||b()};c=setTimeout(b,5E3);j.parentNode.insertBefore(k,j)}};if(!f[q]){try{Object.freeze(f[q]=m)}catch(e){}b()}})();
-/*]]>/* */
-</script>
-</script>
 {/literal}
-<div class="modal fade in" id="login-modal">
-	<div class="modal-dialog login-modal">
-		<div class="modal-content">
-			<form name="login_form" method="post" action="{$relative}/login">	
-				<div class="modal-header">
-					<h4 class="modal-title">{t c='signup.login'}</h4>				
-					<button type="button" class="close" data-dismiss="modal">&times;</button>		
-				</div>
-				<div class="modal-body">
-					<input name="current_url" type="hidden" value="{$current_url}"/>
-					{if $fb_signin == '1'}
-					<div class="mb-4">
-						<button id="facebook-signin" class="btn btn-facebook" disabled><div></div><i class="fab fa-facebook-f"></i> <span>{t c='socialsignup.login_with'} Facebook</span></button>
-					</div>
-					{/if}
-					{if $g_signin == '1'}						
-					<div class="mb-4">
-						<button id="google-signin" class="btn btn-google" disabled><div></div><i class="fab fa-google-plus-g"></i> <span>{t c='socialsignup.login_with'} Google</span></button>
-					</div>
-					{/if}
-					<input name="username" type="text" value="" id="login_username" class="form-control mb-3" placeholder="{t c='global.username'}"/>
-					<input name="password" type="password" value="" id="login_password" class="form-control mb-3" placeholder="{t c='global.password'}"/>
-					<a href="{$relative}/lost" id="lost_password">{t c='global.forgot'}</a><br />
-					<a href="{$relative}/confirm" id="confirmation_email">{t c='global.confirm'}</a>		
-				</div>
-				<div class="modal-footer">
-					<button name="submit_login" id="login_submit" type="submit" class="btn btn-primary btn-bold">{t c='global.login'}</button>
-					<a href="{$relative}/signup" class="btn btn-secondary btn-bold">{translate c='global.sign_up'}</a>
-				</div>
-			</form>			
-		</div>
-    </div>
-</div>
-
-<div class="modal fade" id="dialogModal" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title"></h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">	
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary btn-bold opt-1"></button>			
-				<button type="button" class="btn btn-secondary btn-bold opt-2" data-dismiss="modal"></button>
-			</div>
-		</div>
-	</div>
-</div>
-
-{if $fb_signin == '1'}
-	{include file='fb_signup_modal.tpl'}
-{/if}
-{if $g_signin == '1'}
-	{include file='g_signup_modal.tpl'}
-{/if}
-
-<div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">{t c='global.select_language'}</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-				<div class="row mb-4">
-				{foreach from=$languages key=key item=language }
-					<div class="col-6 col-sm-4">
-						{if $smarty.session.language != $key}
-							<a href="#" id="{$key}" class="change-language">{$language.name}</a>
-						{else}
-							<span class="change-language language-active">{$language.name}</span>
-						{/if}
-					</div>
-				{/foreach}
-				</div>
-			</div>
-			<form name="languageSelect" id="languageSelect" method="post" action="">
-			<input name="language" id="language" type="hidden" value="" />
-			</form>	
-		</div>
-	</div>
-</div>
-
-
-<div class="sticky-top">
-	<div class="top-nav">
-		<div class="container">
-			<div class="top-menu">
-				<div class="float-left">
-					<a class="top-brand" href="{$relative}/"><img src="{$relative}/images/logo/logo.png" alt="{$site_name}"></a>
-				</div>
-				<div class="search-top-container mx-auto d-none d-md-inline-block">
-				<form class="form-inline" name="search" id="search_form" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
-					<div class="input-group">			
-						<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">				
-						<span>
-							<a id="search_select" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="fas fa-video"></i>{/if}</a>
-						</span>				
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-						</span>
-					</div>
-					<input type="hidden" id="search_type" value="{$search_type}">
-				</form>			
-				</div>			
-				{if $multi_language}
-					<div class="float-right">
-						{insert name=language assign=flag}
-						<div class="top-menu-item">
-							<a data-toggle="modal" href="#language-modal">{$flag} <span class="caret"></span></a>
-						</div>
-					</div>
-				{/if}
-				<div class="float-right">
-				{if isset($smarty.session.uid)}
-					<div class="btn-group">
-						<a href="#" class="dropdown-toggle top-menu-item" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-							<span class="d-xs-inline d-sm-none">
-								{if $requests_count > 0 || $mails_count > 0}<span class="badge badge-danger">{$requests_count+$mails_count}</span>{/if} <i class="fas fa-user"></i> <i class="fas fa-caret-down"></i>
-							</span>
-							<span class="d-none d-sm-inline">
-								{if $requests_count > 0 || $mails_count > 0}<span class="badge badge-danger">{$requests_count+$mails_count}</span>{/if} {$smarty.session.username|truncate:15:"..."} <i class="fas fa-caret-down"></i></span>
-							</span>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item" href = "{$relative}/user/edit">{t c='user.edit_profile'}</a>							
-							<a class="dropdown-item" href="{$relative}/user">{t c='topnav.my_profile'}</a>						
-							{if $video_module == '1'}<li><a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/videos">{t c='topnav.my_videos'}</a>{/if}
-							{if $photo_module == '1'}<li><a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/albums">{t c='topnav.my_photos'}</a>{/if}
-							<a class="dropdown-item" href="{$relative}/user/{$smarty.session.username}/blog">{t c='topnav.my_blog'}</a>
-							<a class="dropdown-item" href="{$relative}/feeds">{translate c='global.my_feeds'}</a>
-							<a class="dropdown-item" href="{$relative}/requests"><span class="float-left">{translate c='global.requests'}</span>{if $requests_count > 0}<span class="badge badge-danger float-right">{$requests_count}</span>{/if}<div class="clearfix"></div></a>
-							<a class="dropdown-item" href="{$relative}/mail/inbox"><span class="float-left">{translate c='global.inbox'}</span>{if $mails_count > 0}<span class="badge badge-danger float-right">{$mails_count}</span>{/if}<div class="clearfix"></div></a>
-							<a class="dropdown-item" href="{$relative}/logout">{translate c='global.sign_out'}</a>						
-						</div>
-					</div>
-				{else}
-					<div class="top-menu-item">
-						<a data-toggle="modal" href="#login-modal"><i class="fas fa-key"></i><span class="d-none d-lg-inline"> {translate c='global.login'}</span></a>	
-					</div>
-					<div class="top-menu-item">
-						<a href="{$relative}/signup" rel="nofollow"><i class="fas fa-user-plus"></i><span class="d-none d-lg-inline"> {translate c='global.sign_up'}</span></a>
-					</div>					
-				{/if}
-				</div>
-				<div class="clearfix"></div>
-			</div> 
-		</div>
-	</div>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-
-		<div class="container">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="d-block d-md-none search-bot-container">
-				<form class="form-inline" name="search" id="search_form_xs" method="post" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
-					<div class="input-group">			
-						<input type="text" class="form-control search-box" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query_xs" value="{if isset($search_query)}{$search_query_f}{/if}" autocomplete="off">				
-						<span>
-							<a id="search_select_xs" class="btn btn-search-select">{if isset($search_type) && $search_type == 'photos'}<i class="fas fa-camera"></i>{elseif isset($search_type) && $search_type == 'users'}<i class="fas fa-user"></i>{else}<i class="fas fa-video"></i>{/if}</a>
-						</span>				
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-						</span>
-					</div>				
-				</form>	
-			</div>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item {if $menu == 'home'}active{/if}">
-					<a class="nav-link" href="{$relative}/">{translate c='menu.home'}</a>
-				</li>
-				{if $video_module == '1'}
-					<li class="nav-item d-block d-md-none {if $menu == 'videos'}active{/if}">
-						<a class="nav-link" href="{$relative}/videos">{translate c='menu.videos'}</a>
-					</li>
-					<li class="nav-item dropdown d-none d-md-block {if $menu == 'videos'} active{/if}">
-						<a href="{$relative}/videos" class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown">
-							{translate c='menu.videos'} <b class="caret"></b>
-						</a>
-						{if $featured_videos_sm}
-						<div class="dropdown-menu multi-column-dropdown">
-							<div class="container">
-								<div class="sub-menu-left">
-									<div class="sub-menu-title">
-										{t c='menu.discover_videos'}
-									</div>
-									<div class="sub-menu-content">
+        <div class="wrap-search bg-darker">
+          <div class="container">
+            <div class="search" itemscope itemtype="http://schema.org/WebSite">
+              <meta itemprop="url" content="{$relative}/" />
+              <form itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" class="js-search-form form1" id="search_form_xs" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}" data-url="{$relative}/search/%QUERY%/" name="search" id="search_form" method="post">
+                <meta itemprop="target" content="{$relative}/search/{literal}{q}{/literal}/" />
+                <input class="autocomplete-input" itemprop="query-input" type="search" name="search_query" value="{if isset($search_query)}{$search_query_f}{/if}" id="search_key" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query_xs" value="{if isset($search_query)}{$search_query_f}{/if}">
+                <button type="submit">
+                  <span>
+                    <i class="icon-search">
+                    </i>
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mobile_top">
+        <div class="mobile-header">
+          <div class="wrap-nav-top">
+            <div class="container">
+              <ul class="registration-links">
+            {if isset($smarty.session.uid)}                         
+            <li class="item-holder user"> <span class="item" data-toggle="dropdown"> <span class="wrap-user-img"><img src="{$assets_url}/5x/por/img/no-avatar-user.png" alt=""></span> <span class="name"><span>{$smarty.session.username|truncate:15:"..."}</span></span> </span>
+             <ul class="dropdown-user-links">
+             <li> <a class="link{if $menu_if == 'user'} active{/if}" href="{$relative}/user">{t c='user.wall'}{*<span class="number">8</span>*} </a> </li>
+             <li><a class="link{if $menu_if == 'playlist'} active{/if}" href="{$relative}/user/{$smarty.session.username}/playlist">{t c='user.recently_watched'}</a> </li>  
+             <li><a class="link{if $menu_if == 'favorite'} active{/if}" href="{$relative}/user/{$smarty.session.username}/favorite/videos">{t c='user.FAVORITE_VIDEOS'}</a> </li> 
+                         
+               {if $video_module == '1'}<li> <a class="link{if $menu_if == 'videos'} active{/if}" href="{$relative}/user/{$smarty.session.username}/videos">{t c='topnav.my_videos'}</a> </li>{/if}
+               {if $photo_module == '1'}<li> <a class="link{if $menu_if == 'albums'} active{/if}" href="{$relative}/user/{$smarty.session.username}/albums">{t c='topnav.my_photos'}</a> </li>{/if}
+               <li><a class="link{if $menu_if == 'edit'} active{/if}" href="{$relative}/user/edit">{t c='user.edit_profile'}</a> </li>  
+                <li><a class="link{if $menu_if == 'feeds'} active{/if}" href="{$relative}/feeds">{translate c='global.my_feeds'}</a> </li>
+               {*<a class="link" href="{$relative}/requests"> {translate c='global.requests'} {if $requests_count > 0}<span class="number">{$requests_count}</span>{/if}</a>*}
+               {*<a class="link" href="{$relative}/user/{$smarty.session.username}/blog">{t c='topnav.my_blog'}</a>*}
+               {*<a class="link" href="{$relative}/mail/inbox"> {translate c='global.inbox'} {if $mails_count > 0}<span class="number">{$mails_count}</span>{/if}</a>*}
+               <li> <a class="link" href="{$relative}/logout">{translate c='global.sign_out'}</a> </li>
+              </ul>
+            </li>
+            {else}
+              <li class="item-holder">
+                <a href="#" class="item btn-popup js__login" data-block="logon_login">
+                  <i class="icon-fa-login"></i>
+                  <span>{translate c='global.login'}</span>
+                </a>
+              </li>
+              <li class="item-holder active">
+                <a href="#" class="item btn-popup" data-block="signup_signup">
+                  <i class="icon-fa-signup">
+                  </i>
+                  <span>{translate c='global.sign_up'}</span>
+                </a>
+              </li>
+            {/if}
+              </ul>
+              </div>
+          </div>
+          <header class="header" id="header">
+            <div class="container clearfix">
+              <div class="navbar-header">
+                <div class="logo">
+                  <a href="{$relative}/" title="Free Porn Tube">
+                    <img src="/images/logo/logo.svg" alt="Free Porn Tube" width="145" height="30" style="height: auto;">
+                  </a>
+                </div>
+                <div class="menu-btn sendwich" id="menu-btn">
+                  <span>
+                  </span>
+                </div>
+                <div class="search-btn sendwich" id="search-btn">
+                  <span>
+                  </span>
+                </div>
+              </div>
+              <div class="navbar-collapse clearfix">
+                <div class="responsive-menu">
+                  <nav class="nav">
+                    <ul>
+                      <li{if $menu=='home' } class="active" {/if}>
+                        <a href="{$relative}/" title="{translate c='menu.home'}">
+                          <i class="icon-fa-home">
+                          </i>
+                          <span>{translate c='menu.home'}</span>
+                        </a>
+                        </li>
+                        <li{if $menu=='videos' } class="active" {/if}>
+                          <a href="{$relative}/videos" title="{translate c='menu.videos'}">
+                            <i class="icon-video">
+                            </i>
+                            <span>{translate c='menu.videos'}</span>
+                          </a>
+                          </li>
+                          <li{if $menu=='recommendation' } class="active" {/if}>
+                            <a href="{$relative}/recommendation" title="{translate c='menu.featured_videos'}">
+                              <i class="icon-fa-models">
+                              </i>
+                              <span>{translate c='menu.featured_videos'}</span>
+                            </a>
+                            </li>
+                            <li{if $menu=='uncensored' } class="active" {/if}>
+                              <a href="{$relative}/uncensored" title="{translate c='index.most_wm_videos'}">
+                                <i class="icon-fa-heart">
+                                </i>
+                                <span>{translate c='index.most_wm_videos'}</span>
+                              </a></li>
+                              <li{if $menu=='censored' } class="active" {/if}>
+                                <a href="{$relative}/censored" title="{translate c='index.most_ym_videos'}">
+                                  <i class="icon-fa-star">
+                                  </i>
+                                  <span>{translate c='index.most_ym_videos'}</span>
+                                </a>
+                                </li>
+                                <li{if $menu=='albums' } class="active" {/if}>
+                                  <a href="{$relative}/albums" title="{translate c='menu.photos'}">
+                                    <i class="icon-fa-cats">
+                                    </i>
+                                    <span>{translate c='menu.photos'}</span>
+                                  </a>
+                                  </li>
+                                  <li{if $menu=='blogs' } class="active" {/if}>
+                                    <a href="{$relative}/blogs" title="{translate c='menu.blogs'}">
+                                      <i class="icon-edit">
+                                      </i>
+                                      <span>{translate c='menu.blogs'}</span>
+                                    </a>
+                                    </li>
+                                    <li{if $menu=='categories' } class="active" {/if}>
+                                      <a href="{$relative}/categories" title="{translate c='menu.categories'}">
+                                        <i class="icon-fa-channels">
+                                        </i>
+                                        <span>{translate c='menu.categories'}</span>
+                                      </a>
+                                      </li>
+                                      <li{if $menu=='community' } class="active" {/if}>
+                                        <a href="{$relative}/community" title="Community">
+                                          <i class="icon-fa-community"></i>
+                                          <span>{translate c='menu.community'}</span>
+                                        </a>
+                                        </li>
+                                        <li>
+                                          <a href="https://www.5xp168.com" target="_blank" rel="nofollow" title="{t c ='global.website_release'}">
+                                            <i class="icon-model"></i>
+                                            <span>{t c ='global.website_release'}</span>
+                                          </a>
+                                        </li>
+                                        <li class="nav-dropdown nav-mob-network">
+                                        {if $multi_language}
+                                           {insert name=languagename assign=name}{insert name=languagename assign=name}
+                                          {insert name=languagelang assign=lang}
+                                        <span class="item" style="padding: 0px 13px;display: flex;align-items: center;cursor: pointer;"><img class="img-flag" src="/5x/por/img/flags_png/{$lang}.svg" width="20" height="15" alt=""><span>{$name}</span></span><span class="caret"></span>
+                                        {/if}
 										<ul>
-											<li><a href="{$relative}/videos?type=featured"><i class="far fa-star"></i> {t c='global.featured'}</a></li>								
-											<li><a href="{$relative}/videos?o=mr"><i class="far fa-clock"></i> {t c='global.most_recent'}</a></li>
-											<li><a href="{$relative}/videos?o=mv"><i class="far fa-eye"></i> {t c='global.most_viewed'}</a></li>
-											<li><a href="{$relative}/videos?o=tr"><i class="far fa-thumbs-up"></i> {t c='global.top_rated'}</a></li>
-											<li><a href="{$relative}/videos?o=tf"><i class="far fa-heart"></i> {t c='global.top_favorites'}</a></li>								
-										</ul>									
-									</div>
-									{if $suggestion_arr}
-									<div class="sub-menu-title mt-3">
-										{t c='menu.trending_searches'}										
-									</div>
-									<div class="sub-menu-content">
-										{section name=i loop=$suggestion_arr max=10}
-											<span class="trending-searches"><a href="{$relative}/search/videos/{$suggestion_arr[i].expression}"><i class="fas fa-search"></i>{$suggestion_arr[i].expression}</a></span>
-										{/section}									
-									</div>
-									{/if}									
-								</div>								
-								<div class="sub-menu-right">
-									<div class="sub-menu-title">
-										{t c='menu.featured_videos'}	
-									</div>
-									<div class="sub-menu-content">
-										{if $featured_videos_sm}
-											<div class="row content-row">
-											{section name=i loop=$featured_videos_sm}
-												<div class="col-md-6 col-lg-4 col-xl-3 {if $smarty.section.i.index > 5}d-sm-none d-md-none d-lg-none d-xl-block{/if}">
-													<a href="{$relative}/video/{$featured_videos_sm[i].VID}/{$featured_videos_sm[i].title|clean}">
-														<div class="thumb-overlay" {if $featured_videos_sm[i].vthumbs == '1'} id="playvthumb_{$featured_videos_sm[i].VID}"{/if}>
-															<img src="{insert name=thumb_path vid=$featured_videos_sm[i].VID}/{$featured_videos_sm[i].thumb}.jpg" title="{$featured_videos_sm[i].title|escape:'html'}" alt="{$featured_videos_sm[i].title|escape:'html'}" {if $featured_videos_sm[i].vthumbs == '0'}id="rotate_{$featured_videos_sm[i].VID}_{$featured_videos_sm[i].thumbs}_{$featured_videos_sm[i].thumb}_viewed"{/if} class="img-responsive {if $featured_videos_sm[i].type == 'private'}img-private{/if}"/>
-															{if $featured_videos_sm[i].type == 'private'}<div class="label-private">{t c='global.PRIVATE'}</div>{/if}
-															<div class="duration">
-																{if $featured_videos_sm[i].hd==1}<span class="hd-text-icon">HD</span>{/if}
-																{insert name=duration assign=duration duration=$featured_videos_sm[i].duration}
-																{$duration}
-															</div>
-														</div>
+											<li>
+                       {foreach from=$languages key=key item=language }
+												<a class="change-language" href="#" id="{$key}" style="padding: 12px 14px;display: flex;align-items: center;">
+													<img class="img-flag" src="/5x/por/img/flags_png/{$language.lang}.svg" width="20" height="15" alt="">
+													<span>{$language.name}</span>
+												</a>
+                        {/foreach}
+                        <form name="languageSelect" id="languageSelect" method="post" action="">
+			<input name="language" id="language" type="hidden" value="" />
+			</form>
 
-													</a>
-													<div class="content-info">
-														<a href="{$relative}/video/{$featured_videos_sm[i].VID}/{$featured_videos_sm[i].title|clean}">
-															<spanclass="content-title">{$featured_videos_sm[i].title|escape:'html'}</span>					
-														</a>
-														<div class="content-details">
-															{insert name=views assign=s_views views=$featured_videos_sm[i].viewnumber}											
-															<span class="content-views">
-																{$s_views}								
-															</span>
-															{if $featured_videos_sm[i].rate != 0}
-																<span class="content-rating"><i class="fas fa-thumbs-up"></i> <span>{$featured_videos_sm[i].rate}%</span></span>
-															{/if}
-														</div>				
-													</div>
-												</div>			
-											{/section}
-											</div>
-										{/if}
-									</div>									
-								</div>
-							</div>
-						</div>
-						{/if}
-					</li>
-				{/if}
-				{if $photo_module == '1'}
-					<li class="nav-item {if $menu == 'albums'}active{/if}">
-						<a class="nav-link" href="{$relative}/albums">{translate c='menu.photos'}</a>
-					</li>
-				{/if}
-				{if $blog_module == '1'}
-					<li class="nav-item {if $menu == 'blogs'}active{/if}">
-						<a class="nav-link" href="{$relative}/blogs">{translate c='menu.blogs'}</a>
-					</li>
-				{/if}
-				<li class="nav-item d-block d-md-none {if $menu == 'categories'}active{/if}">
-					<a class="nav-link" href="{$relative}/categories">{translate c='menu.categories'}</a>
-				</li>
-				<li class="nav-item dropdown d-none d-md-block {if $menu == 'categories'} active{/if}">
-					<a href="{$relative}/categories" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						{translate c='menu.categories'} <b class="caret"></b>
-					</a>
-					{if $categories_sm}
-					<div class="dropdown-menu multi-column-dropdown">
-						<div class="container">
-							<div class="sub-menu-left">							
-								{if $suggestion_arr}
-								<div class="sub-menu-title">
-									{t c='menu.trending_searches'}
-								</div>
-								<div class="sub-menu-content">
-									{section name=i loop=$suggestion_arr max=20}
-										<span class="trending-searches"><a href="{$relative}/search/videos/{$suggestion_arr[i].expression}"><i class="fas fa-search"></i>{$suggestion_arr[i].expression}</a></span>
-									{/section}									
-								</div>
-								{/if}				
-								<div class="sub-menu-content mt-3">
-									<a href="{$relative}/categories"><i class="fas fa-th"></i> {translate c='categories.view_all'}</a>
-								</div>									
-							</div>								
-							<div class="sub-menu-right">
-								<div class="sub-menu-title">
-									{t c='menu.popular_categories'}								
-								</div>
-								<div class="sub-menu-content">
-									{if $categories_sm}
-										<div class="row content-row">
-											{section name=i loop=$categories_sm}
-												<div class="col-md-6 col-lg-4 col-xl-3 {if $smarty.section.i.index > 5}d-sm-none d-md-none d-lg-none d-xl-block{/if} m-b-20">
-													<a href="{$relative}/videos/{$categories_sm[i].slug}">
-														<div class="thumb-overlay">
-															<img src="{$relative}/media/categories/video/{$categories_sm[i].CHID}.jpg" title="{$categories_sm[i].name|escape:'html'}" alt="{$categories_sm[i].name|escape:'html'}" class="img-responsive"/>
-															<div class="category-title">
-																<div class="float-left title-truncate">
-																	{$categories_sm[i].name|escape:'html'}
-																</div>
-																<div class="float-right">
-																	{$categories_sm[i].total_videos}
-																</div></div>							
-														</div>
-													</a>
-												</div>			
-											{/section}
-										</div>
-									{/if}
-								</div>									
-							</div>
-						</div>
-					</div>
-					{/if}
-				</li>
-				<li class="nav-item d-block d-md-none {if $menu == 'tags'}active{/if}">
-					<a class="nav-link" href="{$relative}/tags">{translate c='menu.tags'}</a>
-				</li>
-				
-				<div class="nav-item dropdown d-none d-md-block {if $menu == 'tags'} active{/if}">
-					<a href="{$relative}/tags" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						{translate c='menu.tags'} <b class="caret"></b>
-					</a>
-					{if $tags_sm}
-					<div class="dropdown-menu multi-column-dropdown">
-						<div class="container">
-							<div class="sub-menu-left w-100 m-b-10">
-								{if $tags_sm}
-								<div class="sub-menu-title">
-									{translate c='tags.popular_tags'}										
-								</div>
-								<div class="sub-menu-content">
-									<div class="row content-row">
-									{section name=i loop=$tags_sm}										
-										<div class="popular-tag">
-											<span>	
-												<span class="tag-counter">{$tags_sm[i].counter}</span>							
-												<i class="fas fa-search"></i>						
-												<a href="{$relative}/search/videos/{$tags_sm[i].tag}" title="{$tags_sm[i].tag}">{$tags_sm[i].tag}</a>
-											</span>
-										</div>																					
-									{/section}									
-									</div>
-								</div>
-								{/if}	
-								<div class="sub-menu-content mt-3">
-									<a href="{$relative}/tags"><i class="fas fa-tags"></i> {translate c='global.view_more'}</a>
-								</div>								
-							</div>								
-						</div>
-					</div>
-					{/if}
-				</div>
-				
-				<li class="nav-item {if $menu == 'community'} active{/if}">
-					<a class="nav-link" href="{$relative}/community">{translate c='menu.community'}</a>
-				</li>
-				<li><a class="nav-link" href="https://theporndude.com/" target="_blank" rel="nofollow">AV Sites</a></li>
-				<li><a class="nav-link" href="https://go.xlirdr.com/api/goToTheTag?tag=girls%2Fasian-young&userId=1b01405d1422e53ef383ada21787318d6820eea491a69670db267ca47d1e142e" target="_blank" rel="nofollow">Live Sex</a></li>
-				
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item {if $menu == 'upload'}active{/if}">
-					<a class="nav-link" href="{$relative}/upload">{translate c='menu.upload'}</a>
-				</li>				
-			</ul>
-			</div>
-		</div>
-	</nav>
-</div>
-<div id="wrapper">
+											</li>
+										</ul>
+									</li>
+                    </ul>
+                    <ul class="nav-categories">{***修改位置:\include\config.php***} {$suggestion_dh}</ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="wrap-search bg-darker">
+            <div class="container">
+              <div class="search" itemscope itemtype="http://schema.org/WebSite">
+                <meta itemprop="url" content="{$relative}/" />
+                <form itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" class="js-search-form form1" id="search_form_xs" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}" data-url="{$relative}/search/%QUERY%/" name="search" id="search_form" method="post">
+                  <meta itemprop="target" content="{$relative}/search/{literal}{q}{/literal}/" />
+                  <input class="autocomplete-input" itemprop="query-input" type="search" name="search_query" value="{if isset($search_query)}{$search_query_f}{/if}" id="search_key" placeholder="{t c='ajax.search'} {if isset($search_type) && $search_type == 'photos'} {t c='global.albums'}{elseif isset($search_type) && $search_type == 'users'} {t c='global.users'}{else}{t c='global.videos'}{/if}" name="search_query" id="search_query_xs" value="{if isset($search_query)}{$search_query_f}{/if}">
+                  <button type="submit">
+                    <span>
+                      <i class="icon-search">
+                      </i>
+                    </span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <nav class="mobile-nav">
+            <ul>
+              <li{if $menu=='videos' } class="active" {/if}>
+                <a href="{$relative}/videos" title="{translate c='menu.videos'}">{translate c='menu.videos'}</a>
+              </li{if $menu=='albums' } class="active" {/if}>
+              <li>
+                <a href="{$relative}/albums" title="{translate c='menu.photos'}">{translate c='menu.photos'}</a>
+              </li>
+              <li{if $menu=='blogs' } class="active" {/if}>
+                <a href="{$relative}/blogs" title="{translate c='menu.blogs'}">{translate c='menu.blogs'}</a>
+                </li>
+                <li>
+                  <a href="{$relative}/categories" title="{translate c='menu.categories'}">{translate c='menu.categories'}</a>
+                </li>
+            </ul>
+          </nav>
+        </div>
+      </div>{if $dhx_hf}
+      <!---ADV--->
+      <div class="ad-index_dx">{literal}
+        <style>.ad-index_dx a img {width: 960px;}</style>{/literal} {section name=i loop=$dhx_hf} {$dhx_hf[i].adv_text} {/section}</div>
+      <!---ADV--->{/if}
