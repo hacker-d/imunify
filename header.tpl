@@ -126,7 +126,7 @@
 	
 </head>
 <body>
-<script src="/templates/frontend/dark-mint/js/body.js"></script>
+<script src="/templates/frontend/dark-red/js/body.js"></script>
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
