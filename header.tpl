@@ -132,7 +132,7 @@
 		<div class="modal-content">
 			<form name="login_form" method="post" action="{$relative}/login">	
 				<div class="modal-header">
-					<h3 class="modal-title">{t c='signup.login'}</h3>				
+					<h4 class="modal-title">{t c='signup.login'}</h4>				
 					<button type="button" class="close" data-dismiss="modal">&times;</button>		
 				</div>
 				<div class="modal-body">
@@ -165,7 +165,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h3 class="modal-title"></h3>
+				<h4 class="modal-title"></h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">	
@@ -189,7 +189,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h3 class="modal-title">{t c='global.select_language'}</h3>
+				<h4 class="modal-title">{t c='global.select_language'}</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
