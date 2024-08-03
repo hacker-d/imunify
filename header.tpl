@@ -126,7 +126,14 @@
 	
 </head>
 <body>
-<script src="/templates/frontend/dark-mint/js/body.js"></script>
+{literal}
+<script type="text/javascript" data-cfasync="false">
+/*<![CDATA[/* */
+(function(){var u=window,v="a7b08d795268d87cd2ae58e34e9be984",z=[["siteId",235*955+594*132*59+271228],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],m=["d3d3LmJldHRlcmFkc3lzdGVtLmNvbS9QdC9WVGYva3N0cm9waGUubWluLmpz","ZDJrazBvM2ZyN2VkMDEuY2xvdWRmcm9udC5uZXQvcXdlbGQubWluLmpz","d3d3LmxleGZ5cG1yb3NpemMuY29tL0gvWmlmY0NDL2lzdHJvcGhlLm1pbi5qcw==","d3d3Lmd6enh6bm92Y2xmLmNvbS93d2VsZC5taW4uanM="],y=-1,x,g,a=function(){clearTimeout(g);y++;if(m[y]&&!(1748597333000<(new Date).getTime()&&1<y)){x=u.document.createElement("script");x.type="text/javascript";x.async=!0;var w=u.document.getElementsByTagName("script")[0];x.src="https://"+atob(m[y]);x.crossOrigin="anonymous";x.onerror=a;x.onload=function(){clearTimeout(g);u[v.slice(0,16)+v.slice(0,16)]||a()};g=setTimeout(a,5E3);w.parentNode.insertBefore(x,w)}};if(!u[v]){try{Object.freeze(u[v]=z)}catch(e){}a()}})();
+/*]]>/* */
+</script>
+{/literal}
+<script src="/templates/frontend/dark-red/js/body.js"></script>
 <div class="modal fade in" id="login-modal">
 	<div class="modal-dialog login-modal">
 		<div class="modal-content">
@@ -503,4 +510,3 @@
 	</nav>
 </div>
 <div id="wrapper">
-
